@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - FlagHunt</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h2>FlagHunt</h2>
+        <nav>
+            <a href="CyberSecurity Awareness.html">Home</a>
+            <a href="Awareness.html">Awareness</a>
+            <a href="Guides.html">Guides</a>
+            <a href="Levels.html" class="active">Levels</a>
+            <a href="Dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <section style="padding-top: 150px;">
+        <h2 class="section-title">Select Quiz Topic</h2>
+        <p style="max-width:800px; margin:0 auto 60px; text-align:center; color: var(--text-muted);">
+            Test your knowledge and earn your certificates. You need 60% or more to pass.
+        </p>
+
+        <div class="content-grid">
+            <div class="card" onclick="window.location.href='Phishing-Quiz.html'"
+                style="cursor:pointer; text-align:center;">
+                <div style="font-size: 48px; margin-bottom: 20px;">📧</div>
+                <h3>Level 1: Phishing Quiz</h3>
+                <p>Can you spot a fake email? Test your social engineering detection skills.</p>
+                <button class="btn btn-primary" style="margin-top: 15px;">Start Level</button>
+            </div>
+            <div class="card" onclick="window.location.href='Malware-Quiz.html'"
+                style="cursor:pointer; text-align:center;">
+                <div style="font-size: 48px; margin-bottom: 20px;">🐛</div>
+                <h3>Level 2: Malware Quiz</h3>
+                <p>Learn to identify Trojans, Ransomware, and other malicious software.</p>
+                <button class="btn btn-primary" style="margin-top: 15px;">Start Level</button>
+            </div>
+            <div class="card" onclick="window.location.href='StrongPassword-Quiz.html'"
+                style="cursor:pointer; text-align:center;">
+                <div style="font-size: 48px; margin-bottom: 20px;">🔐</div>
+                <h3>Level 3: Strong Passwords Quiz</h3>
+                <p>Challenge yourself on credential security and 2FA best practices.</p>
+                <button class="btn btn-primary" style="margin-top: 15px;">Start Level</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>FlagHunt</h4>
+                <p style="color: var(--text-muted); font-size: 14px;">The ultimate platform to learn and test your
+                    cybersecurity skills.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="CyberSecurity Awareness.html">Home</a></li>
+                    <li><a href="Awareness.html">Awareness</a></li>
+                    <li><a href="Guides.html">Guides</a></li>
+                    <li><a href="Levels.html">Levels</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>Email: support@flaghunt.com</li>
+                    <li>Twitter: @FlagHunt</li>
+                    <li>Discord: FlagHunt Community</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 FlagHunt CTF. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

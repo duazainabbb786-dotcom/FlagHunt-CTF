@@ -1,0 +1,11 @@
+{
+    "name": "flaghunt-ctf",
+    "version": "1.0.0",
+    "description": "Cybersecurity Awareness Platform",
+    "scripts": {
+        "start": "cd backend && npm start",
+        "dev": "cd backend && npm run dev",
+        "install-all": "npm install && cd backend && npm install"
+    },
+    "dependencies": {}
+}

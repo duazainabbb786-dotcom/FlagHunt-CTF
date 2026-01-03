@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levels - FlagHunt</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #050505;
+            color: #e0e0e0;
+        }
+
+        /* Hero / Slider-style Background */
+        .levels-hero {
+            height: 350px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('k.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+            border-bottom: 1px solid #1a1a1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .levels-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #050505, transparent);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: #00eaff;
+            text-shadow: 0 0 20px rgba(0, 234, 255, 0.4);
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 600px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -50px auto 100px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* TryHackMe Style Cards */
+        .level-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .level-card {
+            background: #111;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .level-card:hover {
+            border-color: #00eaff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .level-card.locked {
+            opacity: 0.6;
+            filter: grayscale(0.8);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .card-header {
+            height: 140px;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .level-tag {
+            background: rgba(0, 234, 255, 0.1);
+            color: #00eaff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card-desc {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .card-footer {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #151515;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .progress-bar-wrap {
+            height: 6px;
+            background: #222;
+            border-radius: 3px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #00eaff;
+            border-radius: 3px;
+        }
+
+        .locked-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 20;
+            display: none;
+        }
+
+        .locked .locked-overlay {
+            display: flex;
+        }
+
+        .btn-locked {
+            background: #222;
+            color: #555;
+            cursor: not-allowed;
+        }
+
+        .quiz-links {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .quiz-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .quiz-item:hover {
+            border-color: #00eaff;
+            background: rgba(0, 234, 255, 0.05);
+        }
+
+        .quiz-item i {
+            color: #00eaff;
+        }
+
+        .check-icon {
+            color: #00eaff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>FlagHunt</h2>
+        <nav>
+            <a href="CyberSecurity Awareness.html">Home</a>
+            <a href="Awareness.html">Awareness</a>
+            <a href="Guides.html">Guides</a>
+            <a href="Levels.html" class="active">Levels</a>
+            <a href="Dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <div class="levels-hero">
+        <h1 class="hero-title">LEARNING PATHS</h1>
+        <p class="hero-subtitle">Master cybersecurity through dedicated levels. Complete Level 1 to unlock advanced
+            operational training.</p>
+    </div>
+
+    <div class="container">
+        <div class="level-section">
+
+            <!-- LEVEL 1 -->
+            <div class="level-card" id="level-1">
+                <div class="card-header">
+                    🛡️
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Beginner</span>
+                    <h3 class="card-title">Identity & Access</h3>
+                    <p class="card-desc">The foundation of defense. Learn to identify phishing, malware, and master
+                        credential security.</p>
+
+                    <ul class="quiz-links">
+                        <li class="quiz-item" onclick="window.location.href='Phishing-Quiz.html'">
+                            <span>Phishing Awareness</span>
+                            <span id="check-phishing"></span>
+                        </li>
+                        <li class="quiz-item" onclick="window.location.href='Malware-Quiz.html'">
+                            <span>Malware Detection</span>
+                            <span id="check-malware"></span>
+                        </li>
+                        <li class="quiz-item" onclick="window.location.href='StrongPassword-Quiz.html'">
+                            <span>Password Security</span>
+                            <span id="check-passwords"></span>
+                        </li>
+                    </ul>
+
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" id="progress-1" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #555;">3 Modules</span>
+                    <button class="btn btn-primary" onclick="window.location.href='Phishing-Quiz.html'">START
+                        LEVEL</button>
+                </div>
+            </div>
+
+            <!-- LEVEL 2 -->
+            <div class="level-card locked" id="level-2">
+                <div class="locked-overlay">
+                    <span style="font-size: 3rem;">🔒</span>
+                    <p style="margin-top: 10px; font-weight: 600;">LOCKED</p>
+                    <p style="font-size: 0.75rem; color: #888;">Complete Level 1 to unlock</p>
+                </div>
+                <div class="card-header">
+                    🌐
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Intermediate</span>
+                    <h3 class="card-title">Network Defense</h3>
+                    <p class="card-desc">Understand how networks work and how to defend against common perimeter
+                        threats.</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #555;">5 Modules</span>
+                    <button class="btn btn-locked">LOCKED</button>
+                </div>
+            </div>
+
+            <!-- LEVEL 3 -->
+            <div class="level-card locked" id="level-3">
+                <div class="locked-overlay">
+                    <span style="font-size: 3rem;">🔒</span>
+                    <p style="margin-top: 10px; font-weight: 600;">LOCKED</p>
+                </div>
+                <div class="card-header">
+                    ⚔️
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Advanced</span>
+                    <h3 class="card-title">Security Operations</h3>
+                    <p class="card-desc">Advanced threat hunting, incident response, and active network defense
+                        strategies.</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #555;">8 Modules</span>
+                    <button class="btn btn-locked">LOCKED</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="levels.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progress = levelManager.getProgress();
+
+            // Update Level 1 Visuals
+            const l1Quizzes = ['phishing', 'malware', 'passwords'];
+            let completedCount = 0;
+
+            l1Quizzes.forEach(q => {
+                if (progress.completedQuizzes.includes(q)) {
+                    document.getElementById(`check-${q}`).innerHTML = '✓';
+                    completedCount++;
+                }
+            });
+
+            const percent = (completedCount / l1Quizzes.length) * 100;
+            document.getElementById('progress-1').style.width = percent + '%';
+
+            // Check if Level 2 is unlocked
+            if (progress.unlockedLevels.includes(2)) {
+                document.getElementById('level-2').classList.remove('locked');
+                const l2Btn = document.querySelector('#level-2 .btn-locked');
+                l2Btn.classList.remove('btn-locked');
+                l2Btn.classList.add('btn-primary');
+                l2Btn.innerText = 'START LEVEL';
+                l2Btn.onclick = () => alert('Level 2 content coming soon!');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

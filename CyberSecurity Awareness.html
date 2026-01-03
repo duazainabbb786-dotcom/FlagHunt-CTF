@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlagHunt - Stay Safe in the Digital World</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Local overrides for Home page if needed */
+    .home-modules {
+      padding: 100px 50px;
+      background: var(--bg-darker);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>FlagHunt</h2>
+    <nav>
+      <a href="CyberSecurity Awareness.html" class="active">Home</a>
+      <a href="Awareness.html">Awareness</a>
+      <a href="Guides.html">Guides</a>
+      <a href="Levels.html">Levels</a>
+      <a href="Dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- ==== HERO SECTION WITH VIDEO BACKGROUND (KEEPING AS IS) ==== -->
+  <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="backgroundvideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1>Stay Safe in the Digital World</h1>
+      <p>The ultimate platform to learn, explore, and test your cybersecurity knowledge with FlagHunt.</p>
+      <div style="margin-top: 30px;">
+        <a href="Levels.html" class="btn btn-primary">Start Levels</a>
+        <a href="Awareness.html" class="btn btn-outline" style="margin-left: 15px;">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== MODULES OVERVIEW ==== -->
+  <section class="home-modules">
+    <h2 class="section-title">Training Modules</h2>
+    <div class="content-grid">
+      <div class="card" onclick="window.location.href='Awareness.html'" style="cursor:pointer;">
+        <h3>Security Awareness</h3>
+        <p>Master the basics of digital hygiene and personal security practices.</p>
+        <span style="color: var(--accent); font-weight: 600;">Go to Awareness &rarr;</span>
+      </div>
+      <div class="card" onclick="window.location.href='Guides.html'" style="cursor:pointer;">
+        <h3>Exploit Guides</h3>
+        <p>Deep dive into technical vulnerabilities and defense mechanisms.</p>
+        <span style="color: var(--accent); font-weight: 600;">Go to Guides &rarr;</span>
+      </div>
+      <div class="card" onclick="window.location.href='Levels.html'" style="cursor:pointer;">
+        <h3>Level-Based Quizzes</h3>
+        <p>Challenge yourself and earn certificates of completion for each module.</p>
+        <span style="color: var(--accent); font-weight: 600;">Go to Levels &rarr;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN SECTION (Optional on home, but keeping for compatibility) -->
+  <section class="login-section" id="login" style="background: var(--bg-dark);">
+    <div class="login-box">
+      <h3>Access Terminal</h3>
+      <input type="text" id="name" placeholder="Agent Name" />
+      <input type="email" id="email" placeholder="Email Address" />
+      <input type="password" id="password" placeholder="Key Phrase" />
+      <button id="loginBtn" class="btn btn-primary" style="margin-top:15px; width:100%;">Initialize Session</button>
+      <p style="text-align:center; color: var(--text-muted); font-size:13px; margin-top:10px;">
+        Direct authentication protocol. Unauthorized access is prohibited.
+      </p>
+      <div id="loginStatus"
+        style="color:var(--accent); margin-top:10px; text-align:center; font-weight:bold; font-size: 14px;"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4 style="color: var(--accent); text-shadow: 0 0 5px var(--accent-glow);">FlagHunt</h4>
+        <p style="color: var(--text-muted); font-size: 14px; max-width: 250px;">
+          Leading the way in interactive cybersecurity education. Join thousands of students mastering the art of
+          digital defense.
+        </p>
+      </div>
+      <div class="footer-section">
+        <h4>Training</h4>
+        <ul>
+          <li><a href="Awareness.html">Awareness Portal</a></li>
+          <li><a href="Guides.html">Learning Path</a></li>
+          <li><a href="Levels.html">Certifications</a></li>
+          <li><a href="Dashboard.html">Student Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Details</h4>
+        <ul>
+          <li style="color: var(--text-muted);">📧 Email: support@flaghunt.com</li>
+          <li style="color: var(--text-muted);">📍 Location: Global Cyber Command</li>
+          <li style="color: var(--text-muted);">📞 Support: +1 (555) FLAG-HNT</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 FlagHunt CTF. Built for the Next Generation of Cyber Experts.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('loginBtn');
+      const status = document.getElementById('loginStatus');
+
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim().toLowerCase();
+          const password = document.getElementById('password').value;
+
+          if (!name || !email || !password) {
+            status.innerHTML = '<span style="color:red;">Fill all fields!</span>';
+            return;
+          }
+
+          status.innerHTML = 'Connecting to Secure Server...';
+
+          try {
+            // Register (for new users)
+            await fetch('http://localhost:3000/register', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name, email, password })
+            });
+
+            // Login
+            const res = await fetch('http://localhost:3000/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, password })
+            });
+
+            let data;
+            try {
+              data = await res.json();
+            } catch (e) {
+              data = {};
+            }
+
+            if (res.ok && data.token) {
+              localStorage.setItem('token', data.token);
+              status.innerHTML = '<span style="color:lime;">Authentication Successful!</span>';
+              setTimeout(() => window.location.href = "CyberSecurity Awareness.html", 1000);
+            } else {
+              status.innerHTML = '<span style="color:red;">Access Denied: ' + (data?.message || 'Invalid credentials') + '</span>';
+            }
+          } catch (err) {
+            console.error('Home Login Error:', err);
+            status.innerHTML = `<span style="color:red;">Connection Error: ${err.message}. Check console.</span>`;
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
+</body>
+
+</html>

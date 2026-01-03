@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard - FlagHunt</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      padding: 0;
+      background: var(--bg-darker);
+    }
+
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 100px auto 40px;
+      padding: 20px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .welcome-msg {
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    .welcome-msg span#welcomeUser {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 14px;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      color: var(--text-muted);
+    }
+
+    #chartWrap {
+      background: var(--bg-card);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 30px;
+    }
+
+    .search {
+      background: var(--bg-darker);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 10px 15px;
+      border-radius: 6px;
+      width: 300px;
+    }
+
+    .search:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .btn-danger {
+      background: #ff4d4d33;
+      color: #ff4d4d;
+      border: 1px solid #ff4d4d;
+    }
+
+    .btn-danger:hover {
+      background: #ff4d4d;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>FlagHunt</h2>
+    <nav>
+      <a href="CyberSecurity Awareness.html">Home</a>
+      <a href="Awareness.html">Awareness</a>
+      <a href="Guides.html">Guides</a>
+      <a href="Levels.html">Levels</a>
+      <a href="Dashboard.html" class="active">Dashboard</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-container">
+    <div class="dashboard-header">
+      <div class="welcome-msg">
+        Welcome back, <span id="welcomeUser">Agent</span>
+      </div>
+      <div class="controls">
+        <button class="btn btn-danger" onclick="logout()">Manual Disconnect</button>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 15px; margin-bottom: 30px; align-items: center;">
+      <input id="searchInput" class="search" placeholder="Filter Intel Data..." oninput="renderTable()" />
+      <button class="btn btn-outline" onclick="exportCSV()">Export Intel (CSV)</button>
+      <button class="btn btn-outline" onclick="clearAll()" style="border-color: #ffb3b3; color: #ffb3b3;">Purge
+        Data</button>
+    </div>
+
+    <div id="chartWrap">
+      <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--accent); font-size: 16px; text-transform: uppercase;">
+        Performance Analytics</h3>
+      <canvas id="scoreChart" height="80"></canvas>
+    </div>
+
+    <div id="tableWrap">
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Module</th>
+            <th>ID</th>
+            <th>Alias</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>Org</th>
+            <th>Score</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+      <div id="noData" style="display:none; text-align:center; padding: 40px; color: var(--text-muted);">
+        No data found in the current session.
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Your original dashboard script (unchanged) -->
+  <script>
+    /*
+      Auto-detect & load quiz results from localStorage.
+      - Adds email/city/institute parsing
+      - Updates Chart.js chart
+      - Minimal changes to your page structure
+    */
+
+    let chartInstance = null;
+
+    /* Normalize an entry to the fields we need */
+    function parseEntry(entry, keyHint) {
+      return {
+        id: entry.id || entry.ID || entry.verificationId || entry.verifId || entry.verificationID || (entry.name ? ('R' + Math.floor(100000 + Math.random() * 900000)) : ''),
+        name: entry.name || entry.studentName || entry.fullName || entry.username || entry.user || 'Unknown',
+        email: entry.email || entry.eMail || entry.userEmail || entry.mail || '',
+        city: entry.city || entry.location || entry.town || '',
+        institute: entry.institute || entry.institution || entry.school || entry.college || '',
+        quiz: entry.quiz || entry.quizName || entry.type || keyHint || 'Unknown',
+        score: (typeof entry.score === 'number') ? entry.score
+          : (typeof entry.score === 'string' && entry.score.match(/^\d+%?$/) ? parseInt(entry.score, 10) : (entry.percent || entry.scoreValue || 0)),
+        date: entry.date || entry.takenAt || entry.timestamp || entry.submittedAt || new Date().toISOString()
+      };
+    }
+
+    /* Scan localStorage and return normalized rows */
+    function getAllQuizResultsAuto() {
+      const all = [];
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+
+        if (!key || (!/quiz/i.test(key) && !/result/i.test(key) && !/results/i.test(key))) continue;
+
+        let raw = localStorage.getItem(key);
+        if (!raw) continue;
+
+        try {
+          const parsed = JSON.parse(raw);
+
+          if (Array.isArray(parsed)) {
+            parsed.forEach(item => {
+              if (item && typeof item === 'object') all.push(parseEntry(item, key));
+            });
+          } else if (parsed && typeof parsed === 'object') {
+            all.push(parseEntry(parsed, key));
+          }
+        } catch (err) {
+          // ignore non-json entries
+        }
+      }
+
+      all.sort((a, b) => {
+        const da = Date.parse(a.date) || 0;
+        const db = Date.parse(b.date) || 0;
+        return db - da;
+      });
+
+      return all;
+    }
+
+    /* Render table and call chart update */
+    function renderAutoDashboard() {
+      const tbody = document.getElementById('resultsBody');
+      const noData = document.getElementById('noData');
+      if (!tbody) {
+        console.error('resultsBody element not found.');
+        return;
+      }
+      tbody.innerHTML = '';
+
+      const q = document.getElementById("searchInput").value.toLowerCase().trim();
+      const rows = getAllQuizResultsAuto().filter(r => {
+        if (!q) return true;
+        return (r.name || '').toLowerCase().includes(q) ||
+          (r.email || '').toLowerCase().includes(q) ||
+          (r.id || '').toLowerCase().includes(q) ||
+          (r.quiz || '').toLowerCase().includes(q);
+      });
+
+      if (!rows.length) noData.style.display = 'block';
+      else noData.style.display = 'none';
+
+      rows.forEach((r, idx) => {
+        const tr = document.createElement('tr');
+
+        let displayDate = r.date;
+        try { displayDate = new Date(r.date).toLocaleString(); } catch (e) { }
+
+        let scoreText = (r.score === 0 || r.score) ? (Number(r.score) + '%') : '0%';
+
+        tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td>${escapeHtml(String(r.quiz || 'Unknown'))}</td>
+      <td>${escapeHtml(String(r.id || ''))}</td>
+      <td>${escapeHtml(String(r.name || 'Unknown'))}</td>
+      <td>${escapeHtml(String(r.email || ''))}</td>
+      <td>${escapeHtml(String(r.city || ''))}</td>
+      <td>${escapeHtml(String(r.institute || ''))}</td>
+      <td>${escapeHtml(scoreText)}</td>
+      <td>${escapeHtml(displayDate)}</td>
+      <td><button style="padding:6px 8px;border-radius:6px;border:none;background:#ff6b6b;color:#fff;cursor:pointer" onclick="removeEntryFromLocal(${idx})">Delete</button></td>
+    `;
+        tbody.appendChild(tr);
+      });
+
+      updateChart(rows);
+    }
+
+    function escapeHtml(s) {
+      if (s === null || s === undefined) return '';
+      return String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+    }
+
+    function removeEntryFromLocal(indexInRender) {
+      const flattened = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key || (!/quiz/i.test(key) && !/result/i.test(key) && !/results/i.test(key))) continue;
+        try {
+          const arr = JSON.parse(localStorage.getItem(key));
+          if (Array.isArray(arr)) {
+            arr.forEach((entry, pos) => {
+              flattened.push({ key, pos, entry, normalized: parseEntry(entry, key) });
+            });
+          }
+        } catch (e) { }
+      }
+
+      flattened.sort((a, b) => {
+        const da = Date.parse(a.normalized.date) || 0;
+        const db = Date.parse(b.normalized.date) || 0;
+        return db - da;
+      });
+
+      const target = flattened[indexInRender];
+      if (!target) { alert('Could not find entry to delete.'); return; }
+
+      try {
+        const arr = JSON.parse(localStorage.getItem(target.key));
+        if (!Array.isArray(arr)) throw new Error('source not array');
+        arr.splice(target.pos, 1);
+        localStorage.setItem(target.key, JSON.stringify(arr));
+        alert('Entry deleted.');
+        renderAutoDashboard();
+      } catch (e) {
+        console.error('Delete failed', e);
+        alert('Failed to delete entry (see console).');
+      }
+    }
+
+    function updateChart(rows) {
+      const latest = rows.slice(0, 50).slice().reverse();
+      const labels = latest.map(x => {
+        try { return new Date(x.date).toLocaleDateString(); } catch (e) { return x.date || ''; }
+      });
+      const scores = latest.map(x => Number(x.score) || 0);
+
+      const ctx = document.getElementById('scoreChart').getContext('2d');
+      if (chartInstance) chartInstance.destroy();
+
+      chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Score %',
+            data: scores,
+            backgroundColor: scores.map(s => s >= 60 ? 'rgba(0,200,150,0.8)' : 'rgba(255,99,71,0.85)'),
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, max: 100 } }
+        }
+      });
+    }
+
+    function exportCSV() {
+      const rows = getAllQuizResultsAuto();
+      if (!rows.length) { alert('No data to export.'); return; }
+      const header = ['quiz', 'id', 'name', 'email', 'city', 'institute', 'score', 'date'];
+      const dataRows = rows.map(r => header.map(h => JSON.stringify(r[h] || '')).join(','));
+      const csv = [header.join(','), ...dataRows].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'quiz_results.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function clearAll() {
+      if (!confirm('Clear ALL quizzes data?')) return;
+      const keysToRemove = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (!k) continue;
+        if (/quiz/i.test(k) || /result/i.test(k) || /results/i.test(k)) keysToRemove.push(k);
+      }
+      keysToRemove.forEach(k => localStorage.removeItem(k));
+      renderAutoDashboard();
+    }
+
+    function goHome() {
+      window.location.href = 'CyberSecurity Awareness.html';
+    }
+
+    function renderTable() {
+      renderAutoDashboard();
+    }
+
+    window.addEventListener('load', function () {
+      try { renderAutoDashboard(); }
+      catch (e) { console.error('renderAutoDashboard error', e); }
+    });
+  </script>
+
+  <!-- Link to your script.js (for login protection) -->
+  <script src="script.js"></script>
+
+  <!-- Login protection and logout function -->
+  <script>
+    // Set welcome name (you can improve this later by saving name on register/login)
+    document.getElementById('welcomeUser').textContent = 'User';
+
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('token');
+        window.location.href = 'index.html'; // Change to your home/login page if different
+      }
+    }
+
+    // Protect this page: redirect to login if no token
+    /*
+    if (!localStorage.getItem('token')) {
+      alert('Please login first to access the dashboard!');
+      window.location.href = 'login.html'; // Change to your actual login page name if different
+    }
+    */
+  </script>
+
+</body>
+
+</html>
