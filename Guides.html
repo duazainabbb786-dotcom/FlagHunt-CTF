@@ -5,102 +5,216 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guides - FlagHunt</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Use Ubuntu/Roboto fonts like THM -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css?v=2">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
+    <!-- NAVBAR -->
     <header>
-        <h2>FlagHunt</h2>
-        <nav>
-            <a href="CyberSecurity Awareness.html">Home</a>
-            <a href="Awareness.html">Awareness</a>
-            <a href="Guides.html" class="active">Guides</a>
-            <a href="Levels.html">Levels</a>
-            <a href="Dashboard.html">Dashboard</a>
-        </nav>
+        <div style="display: flex; align-items: center;">
+            <a href="CyberSecurity Awareness.html" class="nav-brand">
+                <i class="fas fa-flag-checkered" style="color:white; font-size: 24px;"></i>
+                FlagHunt
+            </a>
+            <div class="nav-links">
+                <a href="Dashboard.html" class="nav-item">
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    Dashboard
+                </a>
+                <a href="Levels.html" class="nav-item">
+                    <i class="fas fa-book-open nav-icon"></i>
+                    Learn
+                </a>
+                <a href="Awareness.html" class="nav-item">
+                    <i class="fas fa-shield-alt nav-icon"></i>
+                    Awareness
+                </a>
+                <a href="Guides.html" class="nav-item active">
+                    <i class="fas fa-file-alt nav-icon"></i>
+                    Guides
+                </a>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="#" class="access-machines-btn">
+                <span style="width: 8px; height: 8px; background: #fff; border-radius: 50%;"></span>
+                Access Machines
+            </a>
+            <i class="fas fa-search" style="color: #aeb2b9; font-size: 18px;"></i>
+            <div style="position: relative;">
+                <i class="fas fa-bell" style="color: #aeb2b9; font-size: 18px;"></i>
+                <span
+                    style="position: absolute; top: -5px; right: -5px; background: #ff2e2e; color: white; font-size: 10px; padding: 2px 4px; border-radius: 4px;">22</span>
+            </div>
+            <a href="#" class="premium-btn">Go Premium</a>
+            <div style="color: #88cc14; font-weight: bold; font-size: 16px;">0 <i class="fas fa-fire"></i></div>
+            <div class="user-profile">
+                <!-- Placeholder Avatar -->
+                <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User">
+            </div>
+        </div>
     </header>
 
-    <section style="padding-top: 150px;">
-        <h2 class="section-title">Cyber Security Guides</h2>
-        <p style="max-width:800px; margin:0 auto 60px; text-align:center; color: var(--text-muted);">
-            Explore our in-depth guides to master different areas of digital safety and hacking defense.
-        </p>
+    <!-- CONTENT CONTAINER -->
+    <div class="container" style="padding-top: 100px;">
 
-        <div class="content-grid">
-            <a href="SystemSecurity Guide.html" style="text-decoration:none;">
-                <div class="card">
-                    <h3>System Security</h3>
-                    <p>Learn how to harden your operating system and protect your local environment.</p>
-                    <span style="color: var(--accent); font-weight: 600;">View Guide &rarr;</span>
-                </div>
-            </a>
-            <a href="Virus Detection.html" style="text-decoration:none;">
-                <div class="card">
-                    <h3>Virus Detection</h3>
-                    <p>Identify common malware signatures and learn how to use scanning tools effectively.</p>
-                    <span style="color: var(--accent); font-weight: 600;">View Guide &rarr;</span>
-                </div>
-            </a>
-            <a href="Phishing Guide.html" style="text-decoration:none;">
-                <div class="card">
-                    <h3>Phishing Attacks</h3>
-                    <p>Master the art of spotting social engineering and malicious email campaigns.</p>
-                    <span style="color: var(--accent); font-weight: 600;">View Guide &rarr;</span>
-                </div>
-            </a>
-            <a href="Password Safety.html" style="text-decoration:none;">
-                <div class="card">
-                    <h3>Password Safety</h3>
-                    <p>Best practices for credential management and using password managers.</p>
-                    <span style="color: var(--accent); font-weight: 600;">View Guide &rarr;</span>
-                </div>
-            </a>
-            <a href="Network Security.html" style="text-decoration:none;">
-                <div class="card">
-                    <h3>Network Security</h3>
-                    <p>Securing your home Wi-Fi and understanding how VPNs protect your traffic.</p>
-                    <span style="color: var(--accent); font-weight: 600;">View Guide &rarr;</span>
-                </div>
-            </a>
-            <a href="Social Media Security.html" style="text-decoration:none;">
-                <div class="card">
-                    <h3>Social Media Safety</h3>
-                    <p>Managing privacy settings and protecting your digital identity on social platforms.</p>
-                    <span style="color: var(--accent); font-weight: 600;">View Guide &rarr;</span>
-                </div>
-            </a>
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1 style="font-size: 36px; margin-bottom: 10px;">Cyber Security Guides</h1>
+            <p style="color: var(--thm-text-muted); max-width: 600px; margin: 0 auto;">
+                Explore our in-depth guides to master different areas of digital safety and hacking defense.
+            </p>
         </div>
-    </section>
 
-    <footer>
+        <div class="level-section">
+
+            <!-- System Security -->
+            <div class="level-card" onclick="window.location.href='SystemSecurity Guide.html'" style="cursor:pointer;">
+                <div class="card-header">
+                    🖥️
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Hardening</span>
+                    <h3 class="card-title">System Security</h3>
+                    <p class="card-desc">Learn how to harden your operating system and protect your local environment.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #777;">Read Guide</span>
+                    <button class="btn-primary-sm">View</button>
+                </div>
+            </div>
+
+            <!-- Virus Detection -->
+            <div class="level-card" onclick="window.location.href='Virus Detection.html'" style="cursor:pointer;">
+                <div class="card-header">
+                    🦠
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Malware</span>
+                    <h3 class="card-title">Virus Detection</h3>
+                    <p class="card-desc">Identify common malware signatures and learn how to use scanning tools
+                        effectively.</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #777;">Read Guide</span>
+                    <button class="btn-primary-sm">View</button>
+                </div>
+            </div>
+
+            <!-- Phishing Attacks -->
+            <div class="level-card" onclick="window.location.href='Phishing Guide.html'" style="cursor:pointer;">
+                <div class="card-header">
+                    🎣
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Social Eng</span>
+                    <h3 class="card-title">Phishing Attacks</h3>
+                    <p class="card-desc">Master the art of spotting social engineering and malicious email campaigns.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #777;">Read Guide</span>
+                    <button class="btn-primary-sm">View</button>
+                </div>
+            </div>
+
+            <!-- Password Safety -->
+            <div class="level-card" onclick="window.location.href='Password Safety.html'" style="cursor:pointer;">
+                <div class="card-header">
+                    🔑
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Credentials</span>
+                    <h3 class="card-title">Password Safety</h3>
+                    <p class="card-desc">Best practices for credential management and using password managers.</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #777;">Read Guide</span>
+                    <button class="btn-primary-sm">View</button>
+                </div>
+            </div>
+
+            <!-- Network Security -->
+            <div class="level-card" onclick="window.location.href='Network Security.html'" style="cursor:pointer;">
+                <div class="card-header">
+                    🌐
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Networking</span>
+                    <h3 class="card-title">Network Security</h3>
+                    <p class="card-desc">Securing your home Wi-Fi and understanding how VPNs protect your traffic.</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #777;">Read Guide</span>
+                    <button class="btn-primary-sm">View</button>
+                </div>
+            </div>
+
+            <!-- Social Media Security -->
+            <div class="level-card" onclick="window.location.href='Social Media Security.html'" style="cursor:pointer;">
+                <div class="card-header">
+                    📱
+                </div>
+                <div class="card-body">
+                    <span class="level-tag">Privacy</span>
+                    <h3 class="card-title">Social Media Safety</h3>
+                    <p class="card-desc">Managing privacy settings and protecting your digital identity on social
+                        platforms.</p>
+                </div>
+                <div class="card-footer">
+                    <span style="font-size: 0.8rem; color: #777;">Read Guide</span>
+                    <button class="btn-primary-sm">View</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer style="margin-top: 80px;">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>FlagHunt</h4>
-                <p style="color: var(--text-muted); font-size: 14px;">The ultimate platform to learn and test your
-                    cybersecurity skills.</p>
+                <h4 style="color: #fff;">FlagHunt</h4>
+                <div style="gap: 10px; display: flex; flex-direction: column;">
+                    <p style="color: #aeb2b9; font-size: 14px;">Leading the way in interactive cybersecurity education.
+                        Join thousands of students mastering the art of digital defense.</p>
+                </div>
             </div>
             <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="CyberSecurity Awareness.html">Home</a></li>
-                    <li><a href="Awareness.html">Awareness</a></li>
-                    <li><a href="Guides.html">Guides</a></li>
-                    <li><a href="Levels.html">Levels</a></li>
+                <h4 style="color: #fff;">Training</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="Awareness.html" style="color: #aeb2b9; text-decoration: none;">Awareness Portal</a>
+                    </li>
+                    <li><a href="Guides.html" style="color: #aeb2b9; text-decoration: none;">Learning Path</a></li>
+                    <li><a href="Levels.html" style="color: #aeb2b9; text-decoration: none;">Certifications</a></li>
+                    <li><a href="Dashboard.html" style="color: #aeb2b9; text-decoration: none;">Student Dashboard</a>
+                    </li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Contact Info</h4>
-                <ul>
-                    <li>Email: support@flaghunt.com</li>
-                    <li>Twitter: @FlagHunt</li>
-                    <li>Discord: FlagHunt Community</li>
+                <h4 style="color: #fff;">Connect</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="mailto:flagshunt@gmail.com" style="color: #aeb2b9; text-decoration: none;"><i
+                                class="fas fa-envelope" style="margin-right: 8px;"></i> flagshunt@gmail.com</a></li>
+                    <li><a href="https://instagram.com/flagshunt" target="_blank"
+                            style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-instagram"
+                                style="margin-right: 8px;"></i> flagshunt</a></li>
+                    <li><a href="https://www.linkedin.com/in/flag-hunt-b7203b3a4/" target="_blank"
+                            style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-linkedin"
+                                style="margin-right: 8px;"></i> LinkedIn</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2025 FlagHunt CTF. All rights reserved.
+            &copy; 2025 FlagHunt CTF. Built for the Next Generation of Cyber Experts.
         </div>
     </footer>
 

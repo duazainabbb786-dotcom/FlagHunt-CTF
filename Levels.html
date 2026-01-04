@@ -4,236 +4,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levels - FlagHunt</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: #050505;
-            color: #e0e0e0;
-        }
-
-        /* Hero / Slider-style Background */
-        .levels-hero {
-            height: 350px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('k.jpg') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-top: 60px;
-            border-bottom: 1px solid #1a1a1a;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .levels-hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, #050505, transparent);
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            color: #00eaff;
-            text-shadow: 0 0 20px rgba(0, 234, 255, 0.4);
-            margin-bottom: 10px;
-            letter-spacing: 4px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: #888;
-            max-width: 600px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: -50px auto 100px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* TryHackMe Style Cards */
-        .level-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .level-card {
-            background: #111;
-            border: 1px solid #1a1a1a;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .level-card:hover {
-            border-color: #00eaff;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .level-card.locked {
-            opacity: 0.6;
-            filter: grayscale(0.8);
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        .card-header {
-            height: 140px;
-            background: #1a1a1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3rem;
-        }
-
-        .card-body {
-            padding: 25px;
-            flex-grow: 1;
-        }
-
-        .level-tag {
-            background: rgba(0, 234, 255, 0.1);
-            color: #00eaff;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .card-title {
-            font-size: 1.35rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .card-desc {
-            color: #888;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .card-footer {
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #151515;
-            border-top: 1px solid #1a1a1a;
-        }
-
-        .progress-bar-wrap {
-            height: 6px;
-            background: #222;
-            border-radius: 3px;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #00eaff;
-            border-radius: 3px;
-        }
-
-        .locked-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 20;
-            display: none;
-        }
-
-        .locked .locked-overlay {
-            display: flex;
-        }
-
-        .btn-locked {
-            background: #222;
-            color: #555;
-            cursor: not-allowed;
-        }
-
-        .quiz-links {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-        }
-
-        .quiz-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            border: 1px solid #1a1a1a;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .quiz-item:hover {
-            border-color: #00eaff;
-            background: rgba(0, 234, 255, 0.05);
-        }
-
-        .quiz-item i {
-            color: #00eaff;
-        }
-
-        .check-icon {
-            color: #00eaff;
-            font-weight: bold;
-        }
-    </style>
+    <title>FlagHunt - Practice Challenges</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css?v=3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
+    <!-- NAVBAR -->
     <header>
-        <h2>FlagHunt</h2>
-        <nav>
-            <a href="CyberSecurity Awareness.html">Home</a>
-            <a href="Awareness.html">Awareness</a>
-            <a href="Guides.html">Guides</a>
-            <a href="Levels.html" class="active">Levels</a>
-            <a href="Dashboard.html">Dashboard</a>
-        </nav>
+        <div style="display: flex; align-items: center;">
+            <a href="CyberSecurity Awareness.html" class="nav-brand">
+                <i class="fas fa-flag-checkered" style="color:white; font-size: 24px;"></i>
+                FlagHunt
+            </a>
+            <div class="nav-links">
+                <a href="Dashboard.html" class="nav-item">
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    Dashboard
+                </a>
+
+                <div class="dropdown">
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-book-open nav-icon"></i>
+                        Learn <i class="fas fa-caret-down" style="margin-left: 5px; font-size: 12px;"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="Awareness.html">Awareness</a>
+                        <a href="Guides.html">Guides</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="#" class="nav-item active">
+                        <i class="fas fa-crosshairs nav-icon"></i>
+                        Practice <i class="fas fa-caret-down" style="margin-left: 5px; font-size: 12px;"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="Levels.html#level-1">Beginner</a>
+                        <a href="Levels.html#level-2">Intermediate</a>
+                        <a href="Levels.html#level-3">Advanced</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-right">
+
+            <i class="fas fa-search search-icon"
+                style="color: var(--text-muted); font-size: 18px; cursor: pointer;"></i>
+            <div style="position: relative;">
+                <i class="fas fa-bell notification-icon"
+                    style="color: var(--text-muted); font-size: 18px; cursor: pointer;"></i>
+                <span
+                    style="position: absolute; top: -5px; right: -5px; background: var(--danger); color: white; font-size: 10px; padding: 2px 4px; border-radius: 4px;">22</span>
+            </div>
+            <a href="#" class="premium-btn">Go Premium</a>
+            <div style="color: var(--accent); font-weight: bold; font-size: 16px;">0 <i class="fas fa-fire"></i></div>
+            <div class="user-profile" style="position: relative;">
+                <img src="https://ui-avatars.com/api/?name=User&background=9D4EDD&color=fff" alt="User">
+
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown">
+                    <div class="profile-header">
+                        <div class="profile-email">flagshunt@gmail.com</div>
+                    </div>
+                    <a href="#"><i class="fas fa-user" style="margin-right: 8px;"></i> Profile Settings</a>
+                    <a href="#"><i class="fas fa-cog" style="margin-right: 8px;"></i> Preferences</a>
+                    <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
+                        Logout</a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="levels-hero">
-        <h1 class="hero-title">LEARNING PATHS</h1>
-        <p class="hero-subtitle">Master cybersecurity through dedicated levels. Complete Level 1 to unlock advanced
-            operational training.</p>
+    <!-- Notifications Panel -->
+    <div class="notifications-panel">
+        <div class="notifications-header">
+            <span>Notifications</span>
+            <span style="background: var(--danger); padding: 2px 8px; border-radius: 10px; font-size: 11px;">22</span>
+        </div>
+        <div class="notifications-list">
+            <div class="notification-item unread" onclick="markNotificationRead(this)">
+                <div class="notification-title">🎉 New Challenge Available!</div>
+                <div class="notification-text">Advanced Binary Exploitation challenge is now live</div>
+                <div class="notification-time">2 minutes ago</div>
+            </div>
+            <div class="notification-item unread" onclick="markNotificationRead(this)">
+                <div class="notification-title">⚡ Level Completed</div>
+                <div class="notification-text">You've completed Web Basics challenges</div>
+                <div class="notification-time">1 hour ago</div>
+            </div>
+            <div class="notification-item" onclick="markNotificationRead(this)">
+                <div class="notification-title">📧 New Message</div>
+                <div class="notification-text">Admin: Welcome to FlagHunt CTF Platform!</div>
+                <div class="notification-time">3 hours ago</div>
+            </div>
+            <div class="notification-item" onclick="markNotificationRead(this)">
+                <div class="notification-title">🏆 Achievement Unlocked</div>
+                <div class="notification-text">First Blood - Complete your first challenge</div>
+                <div class="notification-time">5 hours ago</div>
+            </div>
+            <div class="notification-item" onclick="markNotificationRead(this)">
+                <div class="notification-title">💡 Hint Available</div>
+                <div class="notification-text">Stuck on Crypto? Check out the new hint</div>
+                <div class="notification-time">1 day ago</div>
+            </div>
+        </div>
     </div>
 
+    <!-- Search Modal -->
+    <div class="search-modal">
+        <input type="text" class="search-input" placeholder="Search challenges, guides, levels...">
+        <div class="search-results">
+            <div style="padding: 20px; text-align: center; color: var(--text-muted);">Type to search...</div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay"></div>
+
+    <!-- Access Machines Modal -->
+    <div class="modal" id="machines-modal">
+        <div class="modal-header">🖥️ Deploy Virtual Machine</div>
+        <div class="modal-content">
+            <p id="machine-status">Initializing virtual machine...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="machine-progress"></div>
+            </div>
+            <p style="font-size: 12px; margin-top: 15px;">Your machine will be ready in a few seconds</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('machines-modal')">Close</button>
+    </div>
+
+    <!-- Certificate Modal -->
+    <div class="modal" id="certificate-modal" style="display: none;">
+        <div id="certificate-content"
+            style="background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%); border: 3px solid var(--primary); border-radius: 20px; padding: 60px 80px; max-width: 1000px; width: 90%; position: relative; box-shadow: 0 0 60px rgba(157, 78, 221, 0.6), inset 0 0 40px rgba(0, 245, 255, 0.1);">
+            <!-- Badge Corner -->
+            <div style="position: absolute; top: 30px; left: 30px;">
+                <i class="fas fa-shield-alt"
+                    style="font-size: 80px; color: var(--primary); filter: drop-shadow(0 0 20px var(--primary));"></i>
+            </div>
+
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h1
+                    style="font-size: 48px; color: var(--accent); text-shadow: 0 0 20px var(--accent); margin: 0; letter-spacing: 3px; font-weight: 700;">
+                    CERTIFICATE</h1>
+                <p style="font-size: 20px; color: var(--primary); margin: 10px 0; letter-spacing: 2px;">OF COMPLETION
+                </p>
+            </div>
+
+            <!-- Divider -->
+            <div
+                style="height: 2px; background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--primary), transparent); margin: 30px 0;">
+            </div>
+
+            <!-- Content -->
+            <div style="text-align: center; margin: 40px 0;">
+                <p style="font-size: 22px; color: var(--text-muted); margin-bottom: 30px;">This certifies that</p>
+                <h2 id="cert-student-name"
+                    style="font-size: 56px; color: white; margin: 20px 0; font-family: 'Great Vibes', cursive; text-shadow: 0 0 30px var(--accent); font-weight: 400;">
+                    Student Name</h2>
+                <p style="font-size: 20px; color: var(--text-muted); margin: 30px 0; line-height: 1.8;">Has successfully
+                    completed all levels of the<br><strong style="color: var(--accent); font-size: 24px;">FlagHunt CTF
+                        Platform</strong></p>
+            </div>
+
+            <!-- Levels Completed -->
+            <div style="display: flex; justify-content: center; gap: 40px; margin: 40px 0;">
+                <div style="text-align: center;">
+                    <i class="fas fa-check-circle"
+                        style="font-size: 32px; color: var(--success); margin-bottom: 10px;"></i>
+                    <p style="color: var(--text-muted); font-size: 16px;">Beginner Level</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-check-circle"
+                        style="font-size: 32px; color: var(--success); margin-bottom: 10px;"></i>
+                    <p style="color: var(--text-muted); font-size: 16px;">Intermediate Level</p>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div
+                style="height: 2px; background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--primary), transparent); margin: 30px 0;">
+            </div>
+
+            <!-- Footer Info -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+                <div>
+                    <p style="color: var(--text-muted); font-size: 14px; margin: 5px 0;">Date: <span id="cert-date"
+                            style="color: white;"></span></p>
+                    <p style="color: var(--text-muted); font-size: 14px; margin: 5px 0;">Certificate ID: <span
+                            id="cert-id" style="color: var(--accent); font-family: monospace;"></span></p>
+                    <p style="color: var(--text-muted); font-size: 14px; margin: 5px 0;">Issued by: <strong
+                            style="color: var(--primary);">FlagHunt CTF</strong></p>
+                </div>
+                <div style="text-align: center;">
+                    <canvas id="qr-canvas"
+                        style="border: 4px solid white; border-radius: 8px; background: white;"></canvas>
+                    <p style="color: var(--text-muted); font-size: 12px; margin-top: 10px;">Scan to Verify</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Button -->
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="downloadCertificatePNG()"
+                style="background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; padding: 15px 40px; border-radius: 8px; font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: 0 0 30px rgba(157, 78, 221, 0.5); transition: all 0.3s;"
+                onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fas fa-download"></i> Download Certificate (PNG)
+            </button>
+            <button onclick="closeCertificateModal()"
+                style="background: transparent; color: var(--text-muted); border: 1px solid var(--border); padding: 12px 30px; border-radius: 8px; font-size: 16px; cursor: pointer; margin-left: 15px; transition: all 0.3s;"
+                onmouseover="this.style.borderColor='var(--primary)'; this.style.color='white'"
+                onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-muted)'">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- AttackBox Modal -->
+    <div class="modal" id="attackbox-modal">
+        <div class="modal-header">⚔️ Deploy AttackBox</div>
+        <div class="modal-content">
+            <p id="attackbox-status">Deploying AttackBox...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="attackbox-progress"></div>
+            </div>
+            <p style="font-size: 12px; margin-top: 15px;">Setting up your Kali Linux environment...</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('attackbox-modal')">Close</button>
+    </div>
+
+    <!-- BREADCRUMBS -->
+    <div class="breadcrumbs">
+        <a href="#">Practice</a> <span>&gt;</span> Challenges
+    </div>
+
+    <!-- ROOM HERO -->
+    <div class="room-hero">
+        <div class="room-image">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                alt="FlagHunt">
+        </div>
+        <div class="room-info">
+            <h1 class="room-title">FlagHunt Challenges</h1>
+            <p class="room-subtitle">Master cybersecurity through hands-on challenges.</p>
+
+            <div class="room-stats">
+                <div class="stat-item">
+                    <div class="difficulty-bars">
+                        <div class="bar filled"></div>
+                        <div class="bar filled"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i> 45 min
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-users"></i> 171,201
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-bug"></i>
+                </div>
+            </div>
+
+            <div class="room-actions">
+                <button id="certificateBtn" class="btn-action primary btn-certificate" disabled
+                    onclick="showCertificateModal()">
+                    <i class="fas fa-certificate"></i> <span id="certBtnText">Get Certificate</span>
+                </button>
+                <div style="position: relative;">
+                    <a href="#" class="btn-action btn-help">
+                        Help <i class="fas fa-caret-down"></i>
+                    </a>
+                    <div class="help-dropdown">
+                        <a onclick="showHints()"><i class="fas fa-lightbulb"></i> Hints</a>
+                        <a onclick="showWalkthrough()"><i class="fas fa-book"></i> Walkthrough</a>
+                        <a onclick="reportIssue()"><i class="fas fa-flag"></i> Report Issue</a>
+                    </div>
+                </div>
+                <a href="#" class="btn-action btn-save">
+                    <i class="far fa-bookmark"></i> Save Room
+                </a>
+                <a href="#" class="btn-action">
+                    <i class="far fa-thumbs-up"></i> 4969 Recommend
+                </a>
+                <div style="position: relative;">
+                    <a href="#" class="btn-action btn-options">
+                        <i class="fas fa-cog"></i> Options <i class="fas fa-caret-down"></i>
+                    </a>
+                    <div class="options-dropdown">
+                        <a onclick="resetProgress()"><i class="fas fa-redo"></i> Reset Progress</a>
+                        <a onclick="downloadResources()"><i class="fas fa-download"></i> Download Resources</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT CONTAINER -->
     <div class="container">
         <div class="level-section">
 
@@ -247,7 +323,6 @@
                     <h3 class="card-title">Identity & Access</h3>
                     <p class="card-desc">The foundation of defense. Learn to identify phishing, malware, and master
                         credential security.</p>
-
                     <ul class="quiz-links">
                         <li class="quiz-item" onclick="window.location.href='Phishing-Quiz.html'">
                             <span>Phishing Awareness</span>
@@ -262,95 +337,250 @@
                             <span id="check-passwords"></span>
                         </li>
                     </ul>
-
-                    <div class="progress-bar-wrap">
-                        <div class="progress-bar" id="progress-1" style="width: 0%;"></div>
-                    </div>
                 </div>
                 <div class="card-footer">
-                    <span style="font-size: 0.8rem; color: #555;">3 Modules</span>
-                    <button class="btn btn-primary" onclick="window.location.href='Phishing-Quiz.html'">START
-                        LEVEL</button>
+                    <span style="font-size: 0.8rem; color: #777;">3 Modules</span>
+                    <button class="btn-primary-sm" onclick="window.location.href='Phishing-Quiz.html'">Start</button>
                 </div>
             </div>
 
             <!-- LEVEL 2 -->
             <div class="level-card locked" id="level-2">
-                <div class="locked-overlay">
-                    <span style="font-size: 3rem;">🔒</span>
-                    <p style="margin-top: 10px; font-weight: 600;">LOCKED</p>
-                    <p style="font-size: 0.75rem; color: #888;">Complete Level 1 to unlock</p>
-                </div>
                 <div class="card-header">
                     🌐
                 </div>
                 <div class="card-body">
                     <span class="level-tag">Intermediate</span>
-                    <h3 class="card-title">Network Defense</h3>
-                    <p class="card-desc">Understand how networks work and how to defend against common perimeter
-                        threats.</p>
+                    <h3 class="card-title">Web Security</h3>
+                    <p class="card-desc">Master the fundamentals of web security including HTTP, Cookies, and basic
+                        vulnerabilities.</p>
+                    <ul class="quiz-links">
+                        <li class="quiz-item" onclick="window.location.href='WebBasics.html'">
+                            <span>Web Basics</span>
+                            <span>⚡</span>
+                        </li>
+                        <li class="quiz-item" onclick="window.location.href='crypto.html'">
+                            <span>Crypto Challenges</span>
+                            <span>🔐</span>
+                        </li>
+                        <li class="quiz-item" onclick="window.location.href='html-level.html'">
+                            <span>HTML Challenges</span>
+                            <span>💻</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="card-footer">
-                    <span style="font-size: 0.8rem; color: #555;">5 Modules</span>
-                    <button class="btn btn-locked">LOCKED</button>
+                    <span style="font-size: 0.8rem; color: #777;">3 Modules</span>
+                    <button class="btn-locked">Locked</button>
                 </div>
             </div>
 
             <!-- LEVEL 3 -->
             <div class="level-card locked" id="level-3">
-                <div class="locked-overlay">
-                    <span style="font-size: 3rem;">🔒</span>
-                    <p style="margin-top: 10px; font-weight: 600;">LOCKED</p>
-                </div>
                 <div class="card-header">
                     ⚔️
                 </div>
                 <div class="card-body">
                     <span class="level-tag">Advanced</span>
                     <h3 class="card-title">Security Operations</h3>
-                    <p class="card-desc">Advanced threat hunting, incident response, and active network defense
-                        strategies.</p>
+                    <p class="card-desc">Advanced threat hunting, incident response, and active network defense.</p>
+                    <ul class="quiz-links">
+                        <li class="quiz-item" onclick="window.location.href='Malware Level.html'">
+                            <span>Malware Analysis</span>
+                            <span>🦠</span>
+                        </li>
+                        <li class="quiz-item" onclick="window.location.href='BinaryExploitation level.html'">
+                            <span>Binary Exploitation</span>
+                            <span>💣</span>
+                        </li>
+                        <li class="quiz-item" onclick="window.location.href='DigitalForencis level.html'">
+                            <span>Digital Forensics</span>
+                            <span>🔍</span>
+                        </li>
+                        <li class="quiz-item" onclick="window.location.href='Linux level.html'">
+                            <span>Linux Fundamentals</span>
+                            <span>🐧</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="card-footer">
-                    <span style="font-size: 0.8rem; color: #555;">8 Modules</span>
-                    <button class="btn btn-locked">LOCKED</button>
+                    <span style="font-size: 0.8rem; color: #777;">4 Modules</span>
+                    <button class="btn-locked">Locked</button>
                 </div>
             </div>
 
         </div>
     </div>
 
+    <!-- BOTTOM PROGRESS BAR -->
+    <div class="room-progress-bar">
+        <div class="progress-fill-global" id="global-progress"></div>
+        <span style="position: relative; z-index: 2;">Room progress (<span id="progress-percent">0</span>%)</span>
+    </div>
+
     <script src="levels.js"></script>
+    <script src="navbar-interactions.js"></script>
+    <script src="level-interactions.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const progress = levelManager.getProgress();
 
-            // Update Level 1 Visuals
+            // Calculate overall progress for bottom bar
             const l1Quizzes = ['phishing', 'malware', 'passwords'];
-            let completedCount = 0;
+            const l2Quizzes = ['webbasics', 'crypto', 'html'];
 
+            let completedCount = 0;
             l1Quizzes.forEach(q => {
                 if (progress.completedQuizzes.includes(q)) {
-                    document.getElementById(`check-${q}`).innerHTML = '✓';
+                    document.getElementById(`check-${q}`).innerHTML = '<i class="fas fa-check" style="color:var(--success);"></i>';
                     completedCount++;
                 }
             });
 
-            const percent = (completedCount / l1Quizzes.length) * 100;
-            document.getElementById('progress-1').style.width = percent + '%';
+            l2Quizzes.forEach(q => {
+                if (progress.completedQuizzes.includes(q)) completedCount++;
+            });
 
-            // Check if Level 2 is unlocked
+            // Simplified Percentage Logic
+            const totalTasks = 10;
+            const percent = Math.min(100, Math.round((completedCount / totalTasks) * 100));
+            document.getElementById('progress-percent').innerText = percent;
+            document.getElementById('global-progress').style.width = percent + '%';
+
+
+            // UNLOCK LOGIC
             if (progress.unlockedLevels.includes(2)) {
-                document.getElementById('level-2').classList.remove('locked');
-                const l2Btn = document.querySelector('#level-2 .btn-locked');
-                l2Btn.classList.remove('btn-locked');
-                l2Btn.classList.add('btn-primary');
-                l2Btn.innerText = 'START LEVEL';
-                l2Btn.onclick = () => alert('Level 2 content coming soon!');
+                const l2Card = document.getElementById('level-2');
+                l2Card.classList.remove('locked');
+                const btn = l2Card.querySelector('.btn-locked');
+                btn.className = 'btn-primary-sm';
+                btn.innerText = 'Start';
+                btn.onclick = () => window.location.href = 'WebBasics.html';
             }
+
+            if (progress.unlockedLevels.includes(3)) {
+                const l3Card = document.getElementById('level-3');
+                l3Card.classList.remove('locked');
+                const btn = l3Card.querySelector('.btn-locked');
+                btn.className = 'btn-primary-sm';
+                btn.innerText = 'Start';
+                btn.onclick = () => window.location.href = 'Malware Level.html';
+            }
+
+            // Check certificate availability
+            checkCertificateAvailability();
         });
+
+        // Certificate Functions
+        function checkCertificateAvailability() {
+            const progress = levelManager.getProgress();
+            const level1 = ['phishing', 'malware', 'passwords'];
+            const level2 = ['webbasics', 'crypto', 'html'];
+
+            const allComplete = [...level1, ...level2].every(q =>
+                progress.completedQuizzes.includes(q)
+            );
+
+            const certBtn = document.getElementById('certificateBtn');
+            const certBtnText = document.getElementById('certBtnText');
+
+            if (allComplete) {
+                certBtn.disabled = false;
+                certBtn.style.opacity = '1';
+                certBtn.style.cursor = 'pointer';
+                certBtn.style.animation = 'pulse 2s infinite';
+                certBtnText.textContent = 'Get Certificate';
+            } else {
+                certBtn.disabled = true;
+                certBtn.style.opacity = '0.5';
+                certBtn.style.cursor = 'not-allowed';
+                certBtnText.innerHTML = '<i class="fas fa-lock"></i> Complete All Levels';
+            }
+        }
+
+        function showCertificateModal() {
+            const progress = levelManager.getProgress();
+            const level1 = ['phishing', 'malware', 'passwords'];
+            const level2 = ['webbasics', 'crypto', 'html'];
+
+            const allComplete = [...level1, ...level2].every(q =>
+                progress.completedQuizzes.includes(q)
+            );
+
+            if (!allComplete) {
+                alert('Please complete all Beginner and Intermediate levels to unlock the certificate!');
+                return;
+            }
+
+            // Get student name from localStorage or prompt
+            let studentName = localStorage.getItem('flaghunt_student_name');
+            if (!studentName) {
+                studentName = prompt('Please enter your name for the certificate:');
+                if (!studentName) return;
+                localStorage.setItem('flaghunt_student_name', studentName);
+            }
+
+            // Generate certificate data
+            const certId = 'FH' + Math.floor(100000 + Math.random() * 900000);
+            const date = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Populate certificate
+            document.getElementById('cert-student-name').textContent = studentName;
+            document.getElementById('cert-date').textContent = date;
+            document.getElementById('cert-id').textContent = certId;
+
+            // Generate QR Code
+            const qrData = `FlagHunt CTF Certificate\nName: ${studentName}\nID: ${certId}\nDate: ${date}\nVerify at: flaghunt.com/verify`;
+            QRCode.toCanvas(
+                document.getElementById('qr-canvas'),
+                qrData,
+                { width: 150, margin: 1 },
+                function (error) {
+                    if (error) console.error(error);
+                }
+            );
+
+            // Show modal
+            document.getElementById('certificate-modal').style.display = 'flex';
+            document.querySelector('.modal-overlay').classList.add('active');
+        }
+
+        function closeCertificateModal() {
+            document.getElementById('certificate-modal').style.display = 'none';
+            document.querySelector('.modal-overlay').classList.remove('active');
+        }
+
+        function downloadCertificatePNG() {
+            const cert = document.getElementById('certificate-content');
+
+            html2canvas(cert, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: null,
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                const studentName = document.getElementById('cert-student-name').textContent;
+                link.download = `FlagHunt_Certificate_${studentName.replace(/\s+/g, '_')}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+                // Show success message
+                alert('Certificate downloaded successfully!');
+            }).catch(err => {
+                console.error('Download error:', err);
+                alert('Failed to download certificate. Please try again.');
+            });
+        }
     </script>
 
+    <!-- QRCode and html2canvas libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </body>
 
 </html>

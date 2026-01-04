@@ -5,96 +5,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awareness - FlagHunt</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Use Ubuntu/Roboto fonts like THM -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css?v=2">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
+    <!-- NAVBAR -->
     <header>
-        <h2>FlagHunt</h2>
-        <nav>
-            <a href="CyberSecurity Awareness.html">Home</a>
-            <a href="Awareness.html" class="active">Awareness</a>
-            <a href="Guides.html">Guides</a>
-            <a href="Levels.html">Levels</a>
-            <a href="Dashboard.html">Dashboard</a>
-        </nav>
-    </header>
-
-    <section class="awareness" style="padding-top: 150px;">
-        <h2 class="section-title">Cyber Security Awareness</h2>
-        <p style="max-width:800px; margin:0 auto 60px; text-align:center; color: var(--text-muted);">
-            Learn how to protect yourself online with simple, effective cyber safety practices. Each topic explains
-            how attackers target you and how you can stay safe.
-        </p>
-
-        <div class="content-grid">
-            <div class="card">
-                <h3>1. System Security</h3>
-                <p>Keep your system updated, use antivirus, avoid pirated software, and never install unknown apps.
-                    Updates patch vulnerabilities before attackers exploit them.</p>
-            </div>
-
-            <div class="card">
-                <h3>2. Detecting Viruses</h3>
-                <p>Slow device? Pop-ups? Unknown apps? High CPU usage? These are virus signs. Use trusted antivirus,
-                    run a full scan, and remove suspicious programs immediately.</p>
-            </div>
-
-            <div class="card">
-                <h3>3. Phishing Safety</h3>
-                <p>Avoid clicking unknown links, double-check email senders, never share passwords, and always verify
-                    websites before entering personal info.</p>
-            </div>
-
-            <div class="card">
-                <h3>4. Password Protection</h3>
-                <p>Use strong, unique passwords. Combine letters, numbers, symbols. Enable 2-factor authentication for
-                    extra security.</p>
-            </div>
-
-            <div class="card">
-                <h3>5. Network Safety</h3>
-                <p>Avoid public Wi-Fi for banking or logins. Use VPN for secure browsing. Secure your Wi-Fi with a
-                    strong password.</p>
-            </div>
-
-            <div class="card">
-                <h3>6. Social Media Safety</h3>
-                <p>Don't overshare personal details. Privacy settings enable karo. Unknown friend requests accept mat
-                    karo — many accounts are fake.</p>
+        <div style="display: flex; align-items: center;">
+            <a href="CyberSecurity Awareness.html" class="nav-brand">
+                <i class="fas fa-flag-checkered" style="color:white; font-size: 24px;"></i>
+                FlagHunt
+            </a>
+            <div class="nav-links">
+                <a href="Dashboard.html" class="nav-item">
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    Dashboard
+                </a>
+                <a href="Levels.html" class="nav-item">
+                    <i class="fas fa-book-open nav-icon"></i>
+                    Learn
+                </a>
+                <a href="Awareness.html" class="nav-item active">
+                    <i class="fas fa-shield-alt nav-icon"></i>
+                    Awareness
+                </a>
+                <a href="Guides.html" class="nav-item">
+                    <i class="fas fa-file-alt nav-icon"></i>
+                    Guides
+                </a>
             </div>
         </div>
-    </section>
 
-    <footer>
+        <div class="nav-right">
+            <a href="#" class="access-machines-btn">
+                <span style="width: 8px; height: 8px; background: #fff; border-radius: 50%;"></span>
+                Access Machines
+            </a>
+            <i class="fas fa-search" style="color: #aeb2b9; font-size: 18px;"></i>
+            <div style="position: relative;">
+                <i class="fas fa-bell" style="color: #aeb2b9; font-size: 18px;"></i>
+                <span
+                    style="position: absolute; top: -5px; right: -5px; background: #ff2e2e; color: white; font-size: 10px; padding: 2px 4px; border-radius: 4px;">22</span>
+            </div>
+            <a href="#" class="premium-btn">Go Premium</a>
+            <div style="color: #88cc14; font-weight: bold; font-size: 16px;">0 <i class="fas fa-fire"></i></div>
+            <div class="user-profile">
+                <!-- Placeholder Avatar -->
+                <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User">
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT CONTAINER -->
+    <div class="container" style="padding-top: 100px;">
+
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1 style="font-size: 36px; margin-bottom: 10px;">Cyber Security Awareness</h1>
+            <p style="color: var(--thm-text-muted); max-width: 600px; margin: 0 auto;">
+                Learn how to protect yourself online with simple, effective cyber safety practices.
+            </p>
+        </div>
+
+        <div class="level-section">
+
+            <!-- Card 1 -->
+            <div class="level-card">
+                <div class="card-header">
+                    1️⃣
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">System Security</h3>
+                    <p class="card-desc">Keep your system updated, use antivirus, avoid pirated software, and never
+                        install unknown apps. Updates patch vulnerabilities before attackers exploit them.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="level-card">
+                <div class="card-header">
+                    2️⃣
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Detecting Viruses</h3>
+                    <p class="card-desc">Slow device? Pop-ups? Unknown apps? High CPU usage? These are virus signs. Use
+                        trusted antivirus, run a full scan, and remove suspicious programs immediately.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="level-card">
+                <div class="card-header">
+                    3️⃣
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Phishing Safety</h3>
+                    <p class="card-desc">Avoid clicking unknown links, double-check email senders, never share
+                        passwords, and always verify websites before entering personal info.</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="level-card">
+                <div class="card-header">
+                    4️⃣
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Password Protection</h3>
+                    <p class="card-desc">Use strong, unique passwords. Combine letters, numbers, symbols. Enable
+                        2-factor authentication for extra security.</p>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="level-card">
+                <div class="card-header">
+                    5️⃣
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Network Safety</h3>
+                    <p class="card-desc">Avoid public Wi-Fi for banking or logins. Use VPN for secure browsing. Secure
+                        your Wi-Fi with a strong password.</p>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="level-card">
+                <div class="card-header">
+                    6️⃣
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Social Media Safety</h3>
+                    <p class="card-desc">Don't overshare personal details. Adjust privacy settings. Don't accept unknown
+                        friend requests — many accounts are fake.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer style="margin-top: 80px;">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>FlagHunt</h4>
-                <p style="color: var(--text-muted); font-size: 14px;">The ultimate platform to learn and test your
-                    cybersecurity skills.</p>
+                <h4 style="color: #fff;">FlagHunt</h4>
+                <div style="gap: 10px; display: flex; flex-direction: column;">
+                    <p style="color: #aeb2b9; font-size: 14px;">Leading the way in interactive cybersecurity education.
+                        Join thousands of students mastering the art of digital defense.</p>
+                </div>
             </div>
             <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="CyberSecurity Awareness.html">Home</a></li>
-                    <li><a href="Awareness.html">Awareness</a></li>
-                    <li><a href="Guides.html">Guides</a></li>
-                    <li><a href="Levels.html">Levels</a></li>
+                <h4 style="color: #fff;">Training</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="Awareness.html" style="color: #aeb2b9; text-decoration: none;">Awareness Portal</a>
+                    </li>
+                    <li><a href="Guides.html" style="color: #aeb2b9; text-decoration: none;">Learning Path</a></li>
+                    <li><a href="Levels.html" style="color: #aeb2b9; text-decoration: none;">Certifications</a></li>
+                    <li><a href="Dashboard.html" style="color: #aeb2b9; text-decoration: none;">Student Dashboard</a>
+                    </li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Contact Info</h4>
-                <ul>
-                    <li>Email: support@flaghunt.com</li>
-                    <li>Twitter: @FlagHunt</li>
-                    <li>Discord: FlagHunt Community</li>
+                <h4 style="color: #fff;">Connect</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="mailto:flagshunt@gmail.com" style="color: #aeb2b9; text-decoration: none;"><i
+                                class="fas fa-envelope" style="margin-right: 8px;"></i> flagshunt@gmail.com</a></li>
+                    <li><a href="https://instagram.com/flagshunt" target="_blank"
+                            style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-instagram"
+                                style="margin-right: 8px;"></i> flagshunt</a></li>
+                    <li><a href="https://www.linkedin.com/in/flag-hunt-b7203b3a4/" target="_blank"
+                            style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-linkedin"
+                                style="margin-right: 8px;"></i> LinkedIn</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2025 FlagHunt CTF. All rights reserved.
+            &copy; 2025 FlagHunt CTF. Built for the Next Generation of Cyber Experts.
         </div>
     </footer>
 

@@ -5,31 +5,248 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlagHunt - Stay Safe in the Digital World</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=3">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    /* Local overrides for Home page if needed */
-    .home-modules {
-      padding: 100px 50px;
-      background: var(--bg-darker);
+    /* Hero Override for Home Page */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      margin-top: 0;
+    }
+
+    .hero video.hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(17, 27, 43, 0.7) 0%, rgba(17, 27, 43, 0.9) 100%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #cbd5e0;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Login Section Styling */
+    .login-section {
+      padding: 60px 20px;
+      background: var(--thm-bg-darker);
+      display: flex;
+      justify-content: center;
+    }
+
+    .login-box {
+      background: var(--thm-bg-card);
+      border: 1px solid var(--thm-border);
+      padding: 40px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-box h3 {
+      margin-top: 0;
+      color: var(--thm-text);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      background: #141d2b;
+      border: 1px solid #2b3b55;
+      border-radius: 4px;
+      color: white;
+      box-sizing: border-box;
+      /* Fix padding issue */
+    }
+
+    .login-box input:focus {
+      outline: none;
+      border-color: var(--thm-green);
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: var(--thm-green);
+      color: black;
+      border: none;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .login-box button:hover {
+      background: var(--thm-green-hover);
     }
   </style>
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <header>
-    <h2>FlagHunt</h2>
-    <nav>
-      <a href="CyberSecurity Awareness.html" class="active">Home</a>
-      <a href="Awareness.html">Awareness</a>
-      <a href="Guides.html">Guides</a>
-      <a href="Levels.html">Levels</a>
-      <a href="Dashboard.html">Dashboard</a>
-    </nav>
+    <div style="display: flex; align-items: center;">
+      <a href="CyberSecurity Awareness.html" class="nav-brand">
+        <i class="fas fa-flag-checkered" style="color:white; font-size: 24px;"></i>
+        FlagHunt
+      </a>
+      <div class="nav-links">
+        <a href="Dashboard.html" class="nav-item">
+          <i class="fas fa-chart-line nav-icon"></i>
+          Dashboard
+        </a>
+
+        <div class="dropdown">
+          <a href="#" class="nav-item">
+            <i class="fas fa-book-open nav-icon"></i>
+            Learn <i class="fas fa-caret-down" style="margin-left: 5px; font-size: 12px;"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="Awareness.html">Awareness</a>
+            <a href="Guides.html">Guides</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="#" class="nav-item">
+            <i class="fas fa-crosshairs nav-icon"></i>
+            Practice <i class="fas fa-caret-down" style="margin-left: 5px; font-size: 12px;"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="Levels.html#level-1">Beginner</a>
+            <a href="Levels.html#level-2">Intermediate</a>
+            <a href="Levels.html#level-3">Advanced</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="access-machines-btn">
+        <span style="width: 8px; height: 8px; background: #fff; border-radius: 50%;"></span>
+        Access Machines
+      </button>
+      <i class="fas fa-search search-icon" style="color: var(--text-muted); font-size: 18px; cursor: pointer;"></i>
+      <div style="position: relative;">
+        <i class="fas fa-bell notification-icon"
+          style="color: var(--text-muted); font-size: 18px; cursor: pointer;"></i>
+        <span
+          style="position: absolute; top: -5px; right: -5px; background: var(--danger); color: white; font-size: 10px; padding: 2px 4px; border-radius: 4px;">22</span>
+      </div>
+      <a href="#" class="premium-btn">Go Premium</a>
+      <div style="color: var(--accent); font-weight: bold; font-size: 16px;">0 <i class="fas fa-fire"></i></div>
+      <div class="user-profile" style="position: relative;">
+        <img src="https://ui-avatars.com/api/?name=User&background=9D4EDD&color=fff" alt="User">
+
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown">
+          <div class="profile-header">
+            <div class="profile-email">flagshunt@gmail.com</div>
+          </div>
+          <a href="#"><i class="fas fa-user" style="margin-right: 8px;"></i> Profile Settings</a>
+          <a href="#"><i class="fas fa-cog" style="margin-right: 8px;"></i> Preferences</a>
+          <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i> Logout</a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- ==== HERO SECTION WITH VIDEO BACKGROUND (KEEPING AS IS) ==== -->
+  <!-- Notifications Panel -->
+  <div class="notifications-panel">
+    <div class="notifications-header">
+      <span>Notifications</span>
+      <span style="background: var(--danger); padding: 2px 8px; border-radius: 10px; font-size: 11px;">22</span>
+    </div>
+    <div class="notifications-list">
+      <div class="notification-item unread" onclick="markNotificationRead(this)">
+        <div class="notification-title">🎉 Welcome to FlagHunt!</div>
+        <div class="notification-text">Start your cybersecurity journey today</div>
+        <div class="notification-time">Just now</div>
+      </div>
+      <div class="notification-item unread" onclick="markNotificationRead(this)">
+        <div class="notification-title">📚 New Guides Available</div>
+        <div class="notification-text">Check out our latest security guides</div>
+        <div class="notification-time">1 hour ago</div>
+      </div>
+      <div class="notification-item" onclick="markNotificationRead(this)">
+        <div class="notification-title">🏆 Challenge of the Week</div>
+        <div class="notification-text">Try the Advanced Binary Exploitation challenge</div>
+        <div class="notification-time">2 days ago</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal">
+    <input type="text" class="search-input" placeholder="Search challenges, guides, levels...">
+    <div class="search-results">
+      <div style="padding: 20px; text-align: center; color: var(--text-muted);">Type to search...</div>
+    </div>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay"></div>
+
+  <!-- Access Machines Modal -->
+  <div class="modal" id="machines-modal">
+    <div class="modal-header">🖥️ Deploy Virtual Machine</div>
+    <div class="modal-content">
+      <p id="machine-status">Initializing virtual machine...</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="machine-progress"></div>
+      </div>
+      <p style="font-size: 12px; margin-top: 15px;">Your machine will be ready in a few seconds</p>
+    </div>
+    <button class="modal-close" onclick="closeModal('machines-modal')">Close</button>
+  </div>
+
+
+  <!-- HERO SECTION -->
   <section class="hero">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="backgroundvideo.mp4" type="video/mp4">
@@ -38,83 +255,116 @@
     <div class="hero-content">
       <h1>Stay Safe in the Digital World</h1>
       <p>The ultimate platform to learn, explore, and test your cybersecurity knowledge with FlagHunt.</p>
-      <div style="margin-top: 30px;">
-        <a href="Levels.html" class="btn btn-primary">Start Levels</a>
-        <a href="Awareness.html" class="btn btn-outline" style="margin-left: 15px;">Learn More</a>
+      <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
+        <a href="Levels.html" class="btn-primary"
+          style="padding: 12px 30px; text-decoration: none; display: inline-block;">Start Levels</a>
+        <a href="Awareness.html" class="btn-action"
+          style="padding: 12px 30px; text-decoration: none; display: inline-block;">Learn More</a>
       </div>
     </div>
   </section>
 
-  <!-- ==== MODULES OVERVIEW ==== -->
-  <section class="home-modules">
-    <h2 class="section-title">Training Modules</h2>
-    <div class="content-grid">
-      <div class="card" onclick="window.location.href='Awareness.html'" style="cursor:pointer;">
-        <h3>Security Awareness</h3>
-        <p>Master the basics of digital hygiene and personal security practices.</p>
-        <span style="color: var(--accent); font-weight: 600;">Go to Awareness &rarr;</span>
-      </div>
-      <div class="card" onclick="window.location.href='Guides.html'" style="cursor:pointer;">
-        <h3>Exploit Guides</h3>
-        <p>Deep dive into technical vulnerabilities and defense mechanisms.</p>
-        <span style="color: var(--accent); font-weight: 600;">Go to Guides &rarr;</span>
-      </div>
-      <div class="card" onclick="window.location.href='Levels.html'" style="cursor:pointer;">
-        <h3>Level-Based Quizzes</h3>
-        <p>Challenge yourself and earn certificates of completion for each module.</p>
-        <span style="color: var(--accent); font-weight: 600;">Go to Levels &rarr;</span>
-      </div>
-    </div>
-  </section>
+  <!-- MODULES SECTION -->
+  <div class="container" style="padding-top: 60px;">
+    <h2
+      style="font-size: 24px; color: white; margin-bottom: 30px; border-left: 5px solid var(--thm-green); padding-left: 15px;">
+      Training Modules</h2>
+    <div class="level-section">
 
-  <!-- LOGIN SECTION (Optional on home, but keeping for compatibility) -->
-  <section class="login-section" id="login" style="background: var(--bg-dark);">
+      <!-- Card 1 -->
+      <div class="level-card" onclick="window.location.href='Awareness.html'" style="cursor:pointer;">
+        <div class="card-header">
+          🛡️
+        </div>
+        <div class="card-body">
+          <span class="level-tag">Fundamentals</span>
+          <h3 class="card-title">Security Awareness</h3>
+          <p class="card-desc">Master the basics of digital hygiene and personal security practices.</p>
+          <div style="margin-top: 15px; color: var(--thm-green); font-weight: 600; font-size: 14px;">
+            Go to Awareness <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="level-card" onclick="window.location.href='Guides.html'" style="cursor:pointer;">
+        <div class="card-header">
+          📚
+        </div>
+        <div class="card-body">
+          <span class="level-tag">Knowledge</span>
+          <h3 class="card-title">Exploit Guides</h3>
+          <p class="card-desc">Deep dive into technical vulnerabilities and defense mechanisms.</p>
+          <div style="margin-top: 15px; color: var(--thm-green); font-weight: 600; font-size: 14px;">
+            Read Guides <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="level-card" onclick="window.location.href='Levels.html'" style="cursor:pointer;">
+        <div class="card-header">
+          🏆
+        </div>
+        <div class="card-body">
+          <span class="level-tag">Challenge</span>
+          <h3 class="card-title">Level-Based Quizzes</h3>
+          <p class="card-desc">Challenge yourself and earn certificates of completion for each module.</p>
+          <div style="margin-top: 15px; color: var(--thm-green); font-weight: 600; font-size: 14px;">
+            Start Hacking <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LOGIN SECTION -->
+  <section class="login-section" id="login">
     <div class="login-box">
       <h3>Access Terminal</h3>
       <input type="text" id="name" placeholder="Agent Name" />
       <input type="email" id="email" placeholder="Email Address" />
       <input type="password" id="password" placeholder="Key Phrase" />
-      <button id="loginBtn" class="btn btn-primary" style="margin-top:15px; width:100%;">Initialize Session</button>
-      <p style="text-align:center; color: var(--text-muted); font-size:13px; margin-top:10px;">
+      <button id="loginBtn">Initialize Session</button>
+      <p style="text-align:center; color: #aeb2b9; font-size:13px; margin-top:15px;">
         Direct authentication protocol. Unauthorized access is prohibited.
       </p>
       <div id="loginStatus"
-        style="color:var(--accent); margin-top:10px; text-align:center; font-weight:bold; font-size: 14px;"></div>
+        style="color:var(--thm-green); margin-top:15px; text-align:center; font-weight:bold; font-size: 14px;"></div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <h4 style="color: var(--accent); text-shadow: 0 0 5px var(--accent-glow);">FlagHunt</h4>
-        <p style="color: var(--text-muted); font-size: 14px; max-width: 250px;">
-          Leading the way in interactive cybersecurity education. Join thousands of students mastering the art of
-          digital defense.
-        </p>
+        <h4 style="color: #fff;">FlagHunt</h4>
+        <div style="gap: 10px; display: flex; flex-direction: column;">
+          <p style="color: #aeb2b9; font-size: 14px;">Leading the way in interactive cybersecurity education. Join
+            thousands of students mastering the art of digital defense.</p>
+        </div>
       </div>
       <div class="footer-section">
-        <h4>Training</h4>
-        <ul>
-          <li><a href="Awareness.html">Awareness Portal</a></li>
-          <li><a href="Guides.html">Learning Path</a></li>
-          <li><a href="Levels.html">Certifications</a></li>
-          <li><a href="Dashboard.html">Student Dashboard</a></li>
+        <h4 style="color: #fff;">Training</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="Awareness.html" style="color: #aeb2b9; text-decoration: none;">Awareness Portal</a></li>
+          <li><a href="Guides.html" style="color: #aeb2b9; text-decoration: none;">Learning Path</a></li>
+          <li><a href="Levels.html" style="color: #aeb2b9; text-decoration: none;">Certifications</a></li>
+          <li><a href="Dashboard.html" style="color: #aeb2b9; text-decoration: none;">Student Dashboard</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h4>Contact Details</h4>
-        <ul>
-          <li style="color: var(--text-muted);">📧 Email: support@flaghunt.com</li>
-          <li style="color: var(--text-muted);">📍 Location: Global Cyber Command</li>
-          <li style="color: var(--text-muted);">📞 Support: +1 (555) FLAG-HNT</li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Social</h4>
-        <ul>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Discord</a></li>
-          <li><a href="#">GitHub</a></li>
+        <h4 style="color: #fff;">Connect</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="mailto:flagshunt@gmail.com" style="color: #aeb2b9; text-decoration: none;"><i
+                class="fas fa-envelope" style="margin-right: 8px;"></i> flagshunt@gmail.com</a></li>
+          <li><a href="https://instagram.com/flagshunt" target="_blank"
+              style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-instagram" style="margin-right: 8px;"></i>
+              flagshunt</a></li>
+          <li><a href="https://www.linkedin.com/in/flag-hunt-b7203b3a4/" target="_blank"
+              style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-linkedin" style="margin-right: 8px;"></i>
+              LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -122,6 +372,7 @@
       &copy; 2025 FlagHunt CTF. Built for the Next Generation of Cyber Experts.
     </div>
   </footer>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -135,7 +386,7 @@
           const password = document.getElementById('password').value;
 
           if (!name || !email || !password) {
-            status.innerHTML = '<span style="color:red;">Fill all fields!</span>';
+            status.innerHTML = '<span style="color:#ff2e2e;">Fill all fields!</span>';
             return;
           }
 
@@ -165,23 +416,22 @@
 
             if (res.ok && data.token) {
               localStorage.setItem('token', data.token);
-              status.innerHTML = '<span style="color:lime;">Authentication Successful!</span>';
+              status.innerHTML = '<span style="color:#88cc14;">Authentication Successful!</span>';
               setTimeout(() => window.location.href = "CyberSecurity Awareness.html", 1000);
             } else {
-              status.innerHTML = '<span style="color:red;">Access Denied: ' + (data?.message || 'Invalid credentials') + '</span>';
+              status.innerHTML = '<span style="color:#ff2e2e;">Access Denied: ' + (data?.message || 'Invalid credentials') + '</span>';
             }
           } catch (err) {
             console.error('Home Login Error:', err);
-            status.innerHTML = `<span style="color:red;">Connection Error: ${err.message}. Check console.</span>`;
+            status.innerHTML = `<span style="color:#ff2e2e;">Connection Error: ${err.message}. Check console.</span>`;
           }
         });
       }
     });
   </script>
 
-</body>
+  <script src="navbar-interactions.js"></script>
 
-</html>
 </body>
 
 </html>

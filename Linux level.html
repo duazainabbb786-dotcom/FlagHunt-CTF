@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL_ACCESS - Linux Fundamentals CTF</title>
+    <link rel="stylesheet" href="Linux.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Fira+Code:wght@400;500&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+
+    <header>
+        <div class="title">LINUX FUNDAMENTALS</div>
+        <div class="stats-bar">
+            <div class="stat"><span class="stat-label">🕒 SESSION_TIME</span> <span class="stat-value" id="timer">00:00:00</span></div>
+            <div class="stat"><span class="stat-label">🎯 OBJECTIVES</span> <span class="stat-value" id="obj-count">0/10</span></div>
+            <div class="stat"><span class="stat-label">🏆 SCORE</span> <span class="stat-value" id="score">0</span></div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <div class="control-dot red"></div>
+                    <div class="control-dot yellow"></div>
+                    <div class="control-dot green"></div>
+                </div>
+                <span>Exploit Terminal v2.5</span>
+            </div>
+            <div id="terminal-output"></div>
+            <div class="command-input-line">
+                <span class="prompt" id="terminal-prompt"></span>
+                <input type="text" id="command-field" autocomplete="off" autofocus>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="mission-summary">
+                <h3>💻 MISSION BRIEFING</h3>
+                <p>You've gained initial shell access to a compromised Linux server. Your objective: locate and extract 10 hidden flags scattered across the filesystem. Each flag teaches a core Linux concept used in real-world penetration testing.</p>
+            </div>
+
+            <h4 class="objectives-title">EXPLOITATION TARGETS</h4>
+            <ul class="objective-list" id="objective-container"></ul>
+
+            <div class="submission-area">
+                <h4>FLAG SUBMISSION</h4>
+                <div class="input-group">
+                    <input type="text" id="flag-input" placeholder="CTF{...}">
+                    <button class="submit-btn" onclick="checkFlag()">SUBMIT</button>
+                </div>
+                <div id="feedback-msg"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-modal">
+        <div class="modal-content">
+            <h2>SYSTEM_BREACHED</h2>
+            <p>CONGRATULATIONS! You have successfully completed the Linux Fundamentals CTF.</p>
+            <p id="final-stats"></p>
+            <button class="submit-btn" onclick="location.reload()">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <!-- Sounds -->
+    <audio id="typingSound" src="https://assets.mixkit.co/sfx/preview/mixkit-typewriter-1363.mp3" preload="auto"></audio>
+    <audio id="successSound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3" preload="auto"></audio>
+    <audio id="errorSound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
+
+    <script src="LinuxJS.js"></script>
+</body>
+</html>

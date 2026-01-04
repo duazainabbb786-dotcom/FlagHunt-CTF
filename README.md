@@ -1,69 +1,67 @@
-# Cybersecurity Awareness on Websites
+# DIGITAL ECHOES - Advanced Forensics CTF
 
-A full-stack web project designed to educate users about cybersecurity threats and best practices. It includes interactive quizzes, guides, and security tips to help users stay safe online.
+## Overview
+Digital Echoes is an immersive, browser-based Capture The Flag (CTF) platform focused on digital forensics and incident response. The platform features 9 progressively challenging forensic scenarios with a professional dark theme interface.
 
-## 🛠️ Tech Stack
-- **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** Node.js, Express.js  
-- **Database:** MongoDB  
+## Features
+- 9 Realistic Forensic Scenarios
+- Professional Dark Theme with Cyberpunk Elements
+- Interactive Terminal Emulator
+- Matrix Background Animation
+- Progressive Challenge Unlocking
+- Hint System with Time Penalty
+- Timer and Progress Tracking
+- Responsive Design
 
-## 📂 Project Structure
-root/
-├─ backend/ # Node.js server code
-├─ frontend/ # HTML, CSS, JS, images, quizzes
-├─ .gitignore
-├─ README.md
+## Installation
+1. Extract all files to a web directory
+2. No server-side dependencies required
+3. Open `index.html` in any modern browser
 
+## How to Play
+1. Challenges unlock sequentially
+2. Select a challenge to view details
+3. Use the terminal to analyze evidence
+4. Submit flags using: `submit flag{...}`
+5. Use hints wisely (costs 30 seconds)
+6. Complete all 9 flags within 60 minutes
 
-## ⚡ Features
-- Interactive quizzes: Phishing, Strong Passwords, Malware  
-- Educational guides for safe online practices  
-- Dashboard for progress tracking (if backend connected)  
-- Multimedia support: images, videos  
+## Challenge Structure
+Each challenge includes:
+- Scenario Description
+- Evidence Files
+- Hints
+- Expected Flag Format
+- Analysis Tools Simulation
 
-## 💻 How to Run Locally
+## Technologies Used
+- HTML5, CSS3, JavaScript (ES6+)
+- Bootstrap 5.3.0
+- Font Awesome 6.4.0
+- Canvas API for Matrix Background
+- Custom Terminal Emulator
 
-### 1. Clone the repo
-```bash
-git clone https://github.com/hunainahseerat/Ceybersecurity-awareness-on-websites.git
-cd Ceybersecurity-awareness-on-websites
+## Browser Compatibility
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
 
-2. Backend setup
-bash
-Copy code
-cd backend
-npm install
-Create a .env file:
+## Answers
+flag{volatility_finds_all}
 
-env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-Start backend:
+flag{deleted_but_not_gone}
 
+flag{dns_tunnel_detected}
 
-npm run dev   # if using nodemon
-# or
-node app.js
+flag{LSB_steghide_pass}
 
-3. Frontend setup
-Open a new terminal:
+flag{sms_backup_decrypt}
 
+flag{xor_encryption_key}
 
-cd frontend
-npm install
-npm start   # or open index.html in browser
-4. Run both together (optional)
-From root folder:
+flag{brute_force_detected}
 
+flag{s3_bucket_misconfig}
 
-npm install concurrently --save-dev
-Add scripts in root package.json:
-
-json
-"scripts": {
-  "server": "nodemon backend/app.js",
-  "client": "npm start --prefix frontend",
-  "dev": "concurrently \"npm run server\" \"npm run client\""
-}
-Run everything:
-npm run dev
+flag{ssdt_hook_uncovered}

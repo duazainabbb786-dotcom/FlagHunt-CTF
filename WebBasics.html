@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Basics CTF - CryptSlayers</title>
+    <link rel="stylesheet" href="webbasics.css">
+    <script src="levels.js"></script>
+    <script src="webbasics.js" defer></script>
+</head>
+
+<body>
+    <!-- Code Background -->
+    <div class="code-background"></div>
+    <div class="web-shapes"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="title">CryptSlayers ⚡</h1>
+            <p class="subtitle">LEVEL 2 - Web Basics Security Challenges</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left: Challenges Section -->
+        <section class="challenges-section">
+            <h2 class="section-title">🌐 WEB BASICS CHALLENGES</h2>
+            <div class="challenges-container" id="challengesContainer">
+                <!-- Challenges will be loaded by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Right: Browser Console Section -->
+        <section class="console-section">
+            <div class="browser-console" id="browserConsole">
+                <div class="console-header">
+                    <div class="console-title">
+                        <span>🛡️</span>
+                        WEB-SECURITY CONSOLE v2.0
+                    </div>
+                    <div class="console-controls">
+                        <div class="control-btn min-btn"></div>
+                        <div class="control-btn max-btn"></div>
+                        <div class="control-btn close-btn" id="closeConsoleBtn"></div>
+                    </div>
+                </div>
+                <div class="console-body" id="consoleBody">
+                    <div class="console-output" id="output">
+                        <div class="welcome-message">
+                            ╔═══════════════════════════════════════════╗<br>
+                            ║ WEB SECURITY CONSOLE ║<br>
+                            ║ Type 'help' for commands ║<br>
+                            ║ Type 'hint' for challenge hint ║<br>
+                            ║ Type 'submit FLAG' to solve challenge ║<br>
+                            ╚═══════════════════════════════════════════╝<br><br>
+                        </div>
+                    </div>
+                    <div class="console-input-line">
+                        <span class="prompt">websec@console$</span>
+                        <input type="text" id="consoleInput" autocomplete="off" placeholder="Type your command here...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <h2 class="section-title">📈 CHALLENGE PROGRESS</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="solvedCount">0</span>
+                        <span class="stat-label">Solved</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="pendingCount">10</span>
+                        <span class="stat-label">Pending</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="score">0</span>
+                        <span class="stat-label">Score</span>
+                    </div>
+                </div>
+                <button class="btn" id="resetBtn">
+                    🔄 Reset Challenges
+                </button>
+                <button class="btn level-btn" id="backBtn">
+                    ⬅️ Back to Levels
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 CryptSlayers ⚡ | Web Security Training | Level 2: Web Basics</p>
+    </footer>
+</body>
+
+</html>

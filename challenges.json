@@ -1,0 +1,72 @@
+{
+  "gameTitle": "Digital Echoes - Forensics CTF",
+  "gameVersion": "2.0",
+  "totalLevels": 9,
+  "timeLimit": 3600,
+  "maxPoints": 2125,
+  "levels": [
+    {
+      "id": 1,
+      "title": "LEVEL 1 — MEMORY FORENSICS",
+      "flag": "flag{volatility_finds_all}",
+      "points": 100,
+      "unlockRequirement": "none"
+    },
+    {
+      "id": 2,
+      "title": "LEVEL 2 — DISK FORENSICS",
+      "flag": "flag{deleted_but_not_gone}",
+      "points": 150,
+      "unlockRequirement": "complete_level_1"
+    },
+    {
+      "id": 3,
+      "title": "LEVEL 3 — NETWORK FORENSICS",
+      "flag": "flag{dns_tunnel_detected}",
+      "points": 200,
+      "unlockRequirement": "complete_level_2"
+    },
+    {
+      "id": 4,
+      "title": "LEVEL 4 — STEGANOGRAPHY",
+      "flag": "flag{LSB_steghide_pass}",
+      "points": 175,
+      "unlockRequirement": "complete_level_3"
+    },
+    {
+      "id": 5,
+      "title": "LEVEL 5 — MOBILE FORENSICS",
+      "flag": "flag{sms_backup_decrypt}",
+      "points": 250,
+      "unlockRequirement": "complete_level_4"
+    },
+    {
+      "id": 6,
+      "title": "LEVEL 6 — MALWARE ANALYSIS",
+      "flag": "flag{xor_encryption_key}",
+      "points": 300,
+      "unlockRequirement": "complete_level_5"
+    },
+    {
+      "id": 7,
+      "title": "LEVEL 7 — LOG ANALYSIS",
+      "flag": "flag{brute_force_detected}",
+      "points": 200,
+      "unlockRequirement": "complete_level_6"
+    },
+    {
+      "id": 8,
+      "title": "LEVEL 8 — CLOUD FORENSICS",
+      "flag": "flag{s3_bucket_misconfig}",
+      "points": 350,
+      "unlockRequirement": "complete_level_7"
+    },
+    {
+      "id": 9,
+      "title": "LEVEL 9 — KERNEL FORENSICS",
+      "flag": "flag{ssdt_hook_uncovered}",
+      "points": 400,
+      "unlockRequirement": "complete_level_8"
+    }
+  ]
+}

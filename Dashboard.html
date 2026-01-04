@@ -5,172 +5,197 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Dashboard - FlagHunt</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    body {
-      padding: 0;
-      background: var(--bg-darker);
+    /* Local Overrides for Dashboard Tables/Charts */
+    .dashboard-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
     }
 
-    .dashboard-container {
-      max-width: 1200px;
-      margin: 100px auto 40px;
+    .table-container {
+      background: var(--thm-bg-card);
+      border: 1px solid var(--thm-border);
+      border-radius: 8px;
       padding: 20px;
-    }
-
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
-    .welcome-msg {
-      font-size: 18px;
-      color: var(--text-muted);
-    }
-
-    .welcome-msg span#welcomeUser {
-      color: var(--accent);
-      font-weight: 600;
+      overflow-x: auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: var(--bg-card);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
+      font-size: 14px;
     }
 
     th,
     td {
-      padding: 15px;
+      padding: 12px 15px;
       text-align: left;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 14px;
+      border-bottom: 1px solid var(--thm-border);
     }
 
     th {
-      background: rgba(255, 255, 255, 0.03);
+      color: var(--thm-green);
       font-weight: 600;
-      color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
     }
 
     td {
-      color: var(--text-muted);
+      color: var(--thm-text-muted);
     }
 
-    #chartWrap {
-      background: var(--bg-card);
-      padding: 30px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      margin-bottom: 30px;
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+      color: white;
     }
 
-    .search {
-      background: var(--bg-darker);
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-      padding: 10px 15px;
-      border-radius: 6px;
-      width: 300px;
+    .search-input {
+      background: #141d2b;
+      border: 1px solid #2b3b55;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      width: 100%;
+      max-width: 300px;
     }
 
-    .search:focus {
-      border-color: var(--accent);
+    .search-input:focus {
       outline: none;
+      border-color: var(--thm-green);
     }
 
-    .btn-danger {
-      background: #ff4d4d33;
-      color: #ff4d4d;
-      border: 1px solid #ff4d4d;
+    .stat-card {
+      background: var(--thm-bg-card);
+      border: 1px solid var(--thm-border);
+      border-radius: 8px;
+      padding: 20px;
     }
 
-    .btn-danger:hover {
-      background: #ff4d4d;
-      color: #fff;
+    .welcome-banner {
+      background: linear-gradient(90deg, #1a2333 0%, #111b2b 100%);
+      border: 1px solid var(--thm-border);
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   </style>
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <header>
-    <h2>FlagHunt</h2>
-    <nav>
-      <a href="CyberSecurity Awareness.html">Home</a>
-      <a href="Awareness.html">Awareness</a>
-      <a href="Guides.html">Guides</a>
-      <a href="Levels.html">Levels</a>
-      <a href="Dashboard.html" class="active">Dashboard</a>
-    </nav>
+    <div style="display: flex; align-items: center;">
+      <a href="CyberSecurity Awareness.html" class="nav-brand">
+        <i class="fas fa-flag-checkered" style="color:white; font-size: 24px;"></i>
+        FlagHunt
+      </a>
+      <div class="nav-links">
+        <a href="Dashboard.html" class="nav-item active">
+          <i class="fas fa-chart-line nav-icon"></i>
+          Dashboard
+        </a>
+        <a href="Levels.html" class="nav-item">
+          <i class="fas fa-book-open nav-icon"></i>
+          Learn
+        </a>
+        <a href="Awareness.html" class="nav-item">
+          <i class="fas fa-shield-alt nav-icon"></i>
+          Awareness
+        </a>
+        <a href="Guides.html" class="nav-item">
+          <i class="fas fa-file-alt nav-icon"></i>
+          Guides
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" class="premium-btn" onclick="logout()" style="background: #ff2e2e; color: white;">Disconnect</a>
+      <div class="user-profile">
+        <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User">
+      </div>
+    </div>
   </header>
 
-  <div class="dashboard-container">
-    <div class="dashboard-header">
-      <div class="welcome-msg">
-        Welcome back, <span id="welcomeUser">Agent</span>
+  <!-- MAIN CONTAINER -->
+  <div class="container" style="padding-top: 80px;">
+
+    <!-- WELCOME HEADER -->
+    <div class="welcome-banner">
+      <div>
+        <h1 style="margin: 0; font-size: 24px;">Welcome back, <span id="welcomeUser"
+            style="color: var(--thm-green);">Agent</span></h1>
+        <p style="margin: 5px 0 0; color: var(--thm-text-muted);">Track your progress and analyze your performance.</p>
       </div>
-      <div class="controls">
-        <button class="btn btn-danger" onclick="logout()">Manual Disconnect</button>
+      <div style="display: flex; gap: 10px;">
+        <!-- Actions could go here -->
       </div>
     </div>
 
-    <div style="display: flex; gap: 15px; margin-bottom: 30px; align-items: center;">
-      <input id="searchInput" class="search" placeholder="Filter Intel Data..." oninput="renderTable()" />
-      <button class="btn btn-outline" onclick="exportCSV()">Export Intel (CSV)</button>
-      <button class="btn btn-outline" onclick="clearAll()" style="border-color: #ffb3b3; color: #ffb3b3;">Purge
-        Data</button>
-    </div>
-
-    <div id="chartWrap">
-      <h3 style="margin-top: 0; margin-bottom: 20px; color: var(--accent); font-size: 16px; text-transform: uppercase;">
-        Performance Analytics</h3>
-      <canvas id="scoreChart" height="80"></canvas>
-    </div>
-
-    <div id="tableWrap">
-      <table id="resultsTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Module</th>
-            <th>ID</th>
-            <th>Alias</th>
-            <th>Email</th>
-            <th>Location</th>
-            <th>Org</th>
-            <th>Score</th>
-            <th>Timestamp</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="resultsBody"></tbody>
-      </table>
-      <div id="noData" style="display:none; text-align:center; padding: 40px; color: var(--text-muted);">
-        No data found in the current session.
+    <!-- CONTROLS -->
+    <div
+      style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+      <input id="searchInput" class="search-input" placeholder="Filter Intel Data..." oninput="renderTable()" />
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-action primary" onclick="exportCSV()"><i class="fas fa-file-csv"></i> Export CSV</button>
+        <button class="btn-action" onclick="clearAll()" style="border-color: #ff2e2e; color: #ff2e2e;"><i
+            class="fas fa-trash"></i> Purge Data</button>
       </div>
     </div>
+
+    <div class="dashboard-grid">
+      <!-- CHART SECTION -->
+      <div class="stat-card">
+        <h3
+          style="margin-top: 0; margin-bottom: 20px; color: var(--thm-text); font-size: 16px; text-transform: uppercase;">
+          <i class="fas fa-chart-bar" style="color: var(--thm-green); margin-right: 8px;"></i> Performance Analytics
+        </h3>
+        <canvas id="scoreChart" height="80"></canvas>
+      </div>
+
+      <!-- TABLE SECTION -->
+      <div class="table-container">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Module</th>
+              <th>ID</th>
+              <th>Alias</th>
+              <th>Email</th>
+              <th>Location</th>
+              <th>Org</th>
+              <th>Score</th>
+              <th>Timestamp</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+        <div id="noData" style="display:none; text-align:center; padding: 40px; color: var(--thm-text-muted);">
+          <i class="fas fa-inbox" style="font-size: 32px; margin-bottom: 15px; opacity: 0.5;"></i><br>
+          No data found in the current session.
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Your original dashboard script (unchanged) -->
+  <!-- Dashboard Logic (Preserved) -->
   <script>
-    /*
-      Auto-detect & load quiz results from localStorage.
-      - Adds email/city/institute parsing
-      - Updates Chart.js chart
-      - Minimal changes to your page structure
-    */
-
     let chartInstance = null;
 
     /* Normalize an entry to the fields we need */
@@ -264,7 +289,7 @@
       <td>${escapeHtml(String(r.institute || ''))}</td>
       <td>${escapeHtml(scoreText)}</td>
       <td>${escapeHtml(displayDate)}</td>
-      <td><button style="padding:6px 8px;border-radius:6px;border:none;background:#ff6b6b;color:#fff;cursor:pointer" onclick="removeEntryFromLocal(${idx})">Delete</button></td>
+      <td><button style="padding:4px 8px;border-radius:4px;border:none;background:#ff2e2e;color:#fff;cursor:pointer;font-size:12px;" onclick="removeEntryFromLocal(${idx})"><i class="fas fa-times"></i></button></td>
     `;
         tbody.appendChild(tr);
       });
@@ -306,7 +331,6 @@
         if (!Array.isArray(arr)) throw new Error('source not array');
         arr.splice(target.pos, 1);
         localStorage.setItem(target.key, JSON.stringify(arr));
-        alert('Entry deleted.');
         renderAutoDashboard();
       } catch (e) {
         console.error('Delete failed', e);
@@ -324,6 +348,10 @@
       const ctx = document.getElementById('scoreChart').getContext('2d');
       if (chartInstance) chartInstance.destroy();
 
+      // Updated Chart Colors for Dark Theme
+      Chart.defaults.color = '#aeb2b9';
+      Chart.defaults.borderColor = '#2b3b55';
+
       chartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -331,14 +359,25 @@
           datasets: [{
             label: 'Score %',
             data: scores,
-            backgroundColor: scores.map(s => s >= 60 ? 'rgba(0,200,150,0.8)' : 'rgba(255,99,71,0.85)'),
+            backgroundColor: scores.map(s => s >= 60 ? 'rgba(136, 204, 20, 0.7)' : 'rgba(255, 46, 46, 0.7)'), // THM Green / Red
+            borderColor: scores.map(s => s >= 60 ? '#88cc14' : '#ff2e2e'),
+            borderWidth: 1,
             borderRadius: 4
           }]
         },
         options: {
           responsive: true,
           plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true, max: 100 } }
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: '#2b3b55' }
+            },
+            x: {
+              grid: { display: false }
+            }
+          }
         }
       });
     }
@@ -384,29 +423,16 @@
     });
   </script>
 
-  <!-- Link to your script.js (for login protection) -->
-  <script src="script.js"></script>
-
   <!-- Login protection and logout function -->
   <script>
-    // Set welcome name (you can improve this later by saving name on register/login)
-    document.getElementById('welcomeUser').textContent = 'User';
+    document.getElementById('welcomeUser').textContent = 'Agent';
 
-    // Logout function
     function logout() {
-      if (confirm('Are you sure you want to logout?')) {
+      if (confirm('Are you sure you want to disconnect?')) {
         localStorage.removeItem('token');
-        window.location.href = 'index.html'; // Change to your home/login page if different
+        window.location.href = 'CyberSecurity Awareness.html';
       }
     }
-
-    // Protect this page: redirect to login if no token
-    /*
-    if (!localStorage.getItem('token')) {
-      alert('Please login first to access the dashboard!');
-      window.location.href = 'login.html'; // Change to your actual login page name if different
-    }
-    */
   </script>
 
 </body>

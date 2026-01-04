@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 - HTML Challenges</title>
+    <link rel="stylesheet" href="html-level.css">
+    <script src="levels.js"></script>
+    <script src="html-level.js" defer></script>
+</head>
+
+<body>
+    <!-- Animated Background Elements -->
+    <div class="grid-lines"></div>
+    <div class="floating-shapes"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="title">CryptSlayers ⚰️</h1>
+            <p class="subtitle">LEVEL 2 - HTML Challenges</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left: Flags Section -->
+        <section class="flags-section">
+            <h2 class="section-title">⚔️ CHALLENGES</h2>
+            <div class="flags-container" id="flagsContainer">
+                <!-- Flags will be loaded by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Right: Terminal Section -->
+        <section class="terminal-section">
+            <div class="terminal-container" id="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title">
+                        <span>🖥️</span>
+                        CTF-TERMINAL v2.1
+                    </div>
+                    <div class="terminal-controls">
+                        <div class="control-btn minimize-btn"></div>
+                        <div class="control-btn maximize-btn"></div>
+                        <div class="control-btn close-btn" id="closeTerminalBtn"></div>
+                    </div>
+                </div>
+                <div class="terminal-body" id="terminalBody">
+                    <div class="terminal-output" id="output">
+                        <div class="welcome-message">
+                            ╔═════════════════════════════════════╗<br>
+                            ║ CYBER ARENA TERMINAL ║<br>
+                            ║ Type 'help' for commands ║<br>
+                            ║ Type 'hint' for challenge hint ║<br>
+                            ║ Type 'submit FLAG' to capture ║<br>
+                            ╚═════════════════════════════════════╝<br><br>
+                        </div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">root@cyber-arena$</span>
+                        <input type="text" id="terminalInput" autocomplete="off"
+                            placeholder="Type your command here...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <h2 class="section-title">📊 PROGRESS TRACKER</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="capturedCount">0</span>
+                        <span class="stat-label">Captured</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="remainingCount">7</span>
+                        <span class="stat-label">Remaining</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="score">0</span>
+                        <span class="stat-label">Score</span>
+                    </div>
+                </div>
+                <button class="btn" id="resetBtn">
+                    🔄 Reset Game
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 CryptSlayers ⚰️ | Level 2: HTML Challenges | Use Responsibly</p>
+    </footer>
+</body>
+
+</html>

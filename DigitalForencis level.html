@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL ECHOES | Advanced Forensics CTF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="DigitalForencis style.css">
+    <link rel="stylesheet" href="terminal/terminal-style.css">
+</head>
+<body class="dark-theme">
+    <!-- Matrix Background -->
+    <canvas id="matrix"></canvas>
+    
+    <!-- Main Container -->
+    <div class="container-fluid main-container">
+        <!-- Header -->
+        <header class="cyber-header">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="DIGITAL ECHOES">DIGITAL ECHOES</h1>
+                <p class="subtitle">ADVANCED DIGITAL FORENSICS LABORATORY</p>
+                <div class="cyber-line"></div>
+            </div>
+            <div class="stats-bar">
+                <div class="stat">
+                    <i class="fas fa-flag"></i>
+                    <span>Flags Found: <span id="found-flags">0</span>/9</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-clock"></i>
+                    <span>Time: <span id="timer">60:00</span></span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-brain"></i>
+                    <span>Difficulty: <span class="text-warning">EXPERT</span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Levels Section -->
+        <section class="levels-section mt-4">
+            <div class="container">
+                <div class="cyber-card">
+                    <div class="card-header cyber-card-header">
+                        <h3><i class="fas fa-layer-group"></i> FORENSICS INVESTIGATION LEVELS</h3>
+                        <div class="level-progress">
+                            <span id="level-progress-text">Level 1/9</span>
+                            <div class="progress level-bar">
+                                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" 
+                                     id="level-progress-bar" style="width: 11%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="levels-container">
+                            <!-- Levels will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="row mt-4">
+            <!-- Left Column - Level Details & Terminal -->
+            <div class="col-md-8">
+                <!-- Level Details Panel -->
+                <div class="cyber-card">
+                    <div class="card-header cyber-card-header">
+                        <h3><i class="fas fa-tasks"></i> CURRENT LEVEL DETAILS</h3>
+                    </div>
+                    <div class="card-body" id="challenges-container">
+                        <div class="text-center text-muted">
+                            <i class="fas fa-arrow-up fa-2x"></i>
+                            <p class="mt-2">Select a level from above to view details and submit flags</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal Panel -->
+                <div class="cyber-card mt-4">
+                    <div class="card-header cyber-card-header">
+                        <h3><i class="fas fa-terminal"></i> FORENSIC TERMINAL</h3>
+                    </div>
+                    <div class="card-body terminal-container" id="terminal-container">
+                        <!-- Terminal will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Hints & Flags -->
+            <div class="col-md-4">
+                <!-- Hint Panel -->
+                <div class="cyber-card">
+                    <div class="card-header cyber-card-header">
+                        <h3><i class="fas fa-lightbulb"></i> INVESTIGATION HINTS</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="hint-container">
+                            <div class="hint-icon">
+                                <i class="fas fa-bulb"></i>
+                            </div>
+                            <p id="current-hint">Select a level to view hints...</p>
+                        </div>
+                        <button class="btn btn-cyber mt-3" id="reveal-hint">
+                            <i class="fas fa-eye"></i> Reveal Hint (Cost: 30s)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Captured Flags -->
+                <div class="cyber-card mt-4">
+                    <div class="card-header cyber-card-header">
+                        <h3><i class="fas fa-trophy"></i> CAPTURED FLAGS</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="flags-grid" id="flags-grid">
+                            <!-- Flags will be added here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Stats -->
+                <div class="cyber-card mt-4">
+                    <div class="card-header cyber-card-header">
+                        <h3><i class="fas fa-chart-line"></i> INVESTIGATION PROGRESS</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-stats">
+                            <div class="stat-item">
+                                <span>Level Progress</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         id="progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-item mt-3">
+                                <span>Points Earned: <strong id="total-points">0</strong></span>
+                            </div>
+                            <div class="stat-item mt-2">
+                                <span>Time Used: <strong id="time-used">00:00</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="cyber-footer mt-5">
+            <div class="cyber-line"></div>
+            <p class="text-center mt-3">
+                <i class="fas fa-shield-alt"></i> DIGITAL ECHOES CTF v2.0 | 
+                <span class="text-muted">Advanced Memory & Disk Forensics</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Flag Captured Modal -->
+    <div class="modal fade" id="flagModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content cyber-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-flag-checkered"></i> FLAG CAPTURED!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="flag-success">
+                        <i class="fas fa-trophy fa-3x text-warning"></i>
+                        <h4 class="mt-3" id="flag-title">Flag Captured!</h4>
+                        <div class="flag-box">
+                            <code id="captured-flag">flag{...}</code>
+                        </div>
+                        <p class="mt-3" id="flag-description"></p>
+                        <div class="mt-4">
+                            <button class="btn btn-cyber" data-bs-dismiss="modal">
+                                <i class="fas fa-forward"></i> Continue Investigation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="matrix-bg.js"></script>
+    <script src="terminal/terminal.js"></script>
+    <script src="DigitalForencis script.js"></script>
+</body>
+</html>

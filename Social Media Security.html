@@ -5,41 +5,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social Media Safety - FlagHunt</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <header>
-    <h2>FlagHunt</h2>
-    <nav>
-      <a href="CyberSecurity Awareness.html">Home</a>
-      <a href="Awareness.html">Awareness</a>
-      <a href="Guides.html" class="active">Guides</a>
-      <a href="Levels.html">Levels</a>
-      <a href="Dashboard.html">Dashboard</a>
-    </nav>
+    <div style="display: flex; align-items: center;">
+      <a href="CyberSecurity Awareness.html" class="nav-brand">
+        <i class="fas fa-flag-checkered" style="color:white; font-size: 24px;"></i>
+        FlagHunt
+      </a>
+      <div class="nav-links">
+        <a href="Dashboard.html" class="nav-item">
+          <i class="fas fa-chart-line nav-icon"></i>
+          Dashboard
+        </a>
+        <a href="Levels.html" class="nav-item">
+          <i class="fas fa-book-open nav-icon"></i>
+          Learn
+        </a>
+        <a href="Awareness.html" class="nav-item">
+          <i class="fas fa-shield-alt nav-icon"></i>
+          Awareness
+        </a>
+        <a href="Guides.html" class="nav-item active">
+          <i class="fas fa-file-alt nav-icon"></i>
+          Guides
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" class="access-machines-btn">
+        <span style="width: 8px; height: 8px; background: #fff; border-radius: 50%;"></span>
+        Access Machines
+      </a>
+      <i class="fas fa-search" style="color: #aeb2b9; font-size: 18px;"></i>
+      <div style="position: relative;">
+        <i class="fas fa-bell" style="color: #aeb2b9; font-size: 18px;"></i>
+        <span
+          style="position: absolute; top: -5px; right: -5px; background: #ff2e2e; color: white; font-size: 10px; padding: 2px 4px; border-radius: 4px;">22</span>
+      </div>
+      <a href="#" class="premium-btn">Go Premium</a>
+      <div class="user-profile">
+        <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User">
+      </div>
+    </div>
   </header>
 
-  <section style="padding-top: 150px;">
-    <div class="card" style="max-width: 900px; margin: 0 auto;">
-      <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Social Media Security Guide</h2>
-      <p>Social platforms are useful but oversharing risks privacy, reputation and targeted attacks.</p>
+  <div class="container" style="padding-top: 100px;">
 
-      <div class="content-grid" style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        <div class="card" style="padding: 20px;">
-          <h3>Privacy Habits</h3>
-          <ul style="padding-left: 20px; color: var(--text-muted);">
+    <div style="margin-bottom: 20px;">
+      <a href="Guides.html" style="color: var(--thm-green); text-decoration: none; font-weight: bold;">
+        <i class="fas fa-arrow-left"></i> Back to Guides
+      </a>
+    </div>
+
+    <!-- GUIDE CONTENT -->
+    <div class="level-card" style="cursor: default; background: var(--thm-bg-card); padding: 40px;">
+      <h2 style="color: white; margin-bottom: 10px; font-size: 28px;">Social Media Security Guide</h2>
+      <p style="color: var(--thm-text-muted); font-size: 16px; margin-bottom: 30px;">
+        Social platforms are useful but oversharing risks privacy, reputation and targeted attacks.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+        <div
+          style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; border: 1px solid var(--thm-border);">
+          <h3 style="color: var(--thm-green); margin-bottom: 15px;">Privacy Habits</h3>
+          <ul style="padding-left: 20px; color: #ddd; line-height: 1.6;">
             <li>Set accounts to private</li>
             <li>Limit post visibility</li>
             <li>Review app permissions</li>
             <li>Think before you post</li>
           </ul>
         </div>
-        <div class="card" style="padding: 20px;">
-          <h3>Security & Recovery</h3>
-          <ul style="padding-left: 20px; color: var(--text-muted);">
+        <div
+          style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; border: 1px solid var(--thm-border);">
+          <h3 style="color: var(--thm-green); margin-bottom: 15px;">Security & Recovery</h3>
+          <ul style="padding-left: 20px; color: #ddd; line-height: 1.6;">
             <li>Enable 2FA (MFA)</li>
             <li>Verify friend requests</li>
             <li>Report impersonation</li>
@@ -49,27 +98,58 @@
       </div>
 
       <div style="margin-top: 40px;">
-        <h3>Academy Intelligence</h3>
-        <div class="content-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-          <a href="https://youtu.be/yGSuROP_cmA?si=e1RVM8haPPOOsSca" target="_blank" class="video-card"
-            style="display: block; position: relative; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden;">
-            <img src="https://img.youtube.com/vi/yGSuROP_cmA/hqdefault.jpg" alt="Video" style="width: 100%;">
+        <h3
+          style="color: white; border-bottom: 1px solid var(--thm-border); padding-bottom: 10px; margin-bottom: 20px;">
+          Academy Intelligence</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+          <a href="https://youtu.be/yGSuROP_cmA?si=e1RVM8haPPOOsSca" target="_blank"
+            style="display: block; position: relative;">
+            <img src="https://img.youtube.com/vi/yGSuROP_cmA/hqdefault.jpg" alt="Video"
+              style="width: 100%; border-radius: 8px; border: 2px solid var(--thm-border);">
             <div
-              style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-shadow: 0 0 10px black;">
+              style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-shadow: 0 0 10px black; font-size: 50px;">
               ▶</div>
           </a>
         </div>
       </div>
 
-      <div style="margin-top: 50px; text-align: center;">
-        <a href="Guides.html" class="btn btn-outline">&larr; Back to Guides</a>
+    </div>
+  </div>
+
+  <footer style="margin-top: 80px;">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4 style="color: #fff;">FlagHunt</h4>
+        <div style="gap: 10px; display: flex; flex-direction: column;">
+          <p style="color: #aeb2b9; font-size: 14px;">Leading the way in interactive cybersecurity education. Join
+            thousands of students mastering the art of digital defense.</p>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4 style="color: #fff;">Training</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="Awareness.html" style="color: #aeb2b9; text-decoration: none;">Awareness Portal</a></li>
+          <li><a href="Guides.html" style="color: #aeb2b9; text-decoration: none;">Learning Path</a></li>
+          <li><a href="Levels.html" style="color: #aeb2b9; text-decoration: none;">Certifications</a></li>
+          <li><a href="Dashboard.html" style="color: #aeb2b9; text-decoration: none;">Student Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 style="color: #fff;">Connect</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="mailto:flagshunt@gmail.com" style="color: #aeb2b9; text-decoration: none;"><i
+                class="fas fa-envelope" style="margin-right: 8px;"></i> flagshunt@gmail.com</a></li>
+          <li><a href="https://instagram.com/flagshunt" target="_blank"
+              style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-instagram" style="margin-right: 8px;"></i>
+              flagshunt</a></li>
+          <li><a href="https://www.linkedin.com/in/flag-hunt-b7203b3a4/" target="_blank"
+              style="color: #aeb2b9; text-decoration: none;"><i class="fab fa-linkedin" style="margin-right: 8px;"></i>
+              LinkedIn</a></li>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <footer>
     <div class="footer-bottom">
-      &copy; 2025 FlagHunt CTF. Private. Aware. Intelligent.
+      &copy; 2025 FlagHunt CTF. Built for the Next Generation of Cyber Experts.
     </div>
   </footer>
 
